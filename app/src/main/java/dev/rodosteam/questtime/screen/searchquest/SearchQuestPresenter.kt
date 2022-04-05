@@ -4,10 +4,7 @@ import dev.rodosteam.questtime.quest.repo.QuestItemRepo
 import dev.rodosteam.questtime.screen.common.mvp.MvpPresenter
 import dev.rodosteam.questtime.screen.common.nav.BackPressDispatcher
 import dev.rodosteam.questtime.screen.common.nav.ScreenNavigator
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class SearchQuestPresenter(
     private val screenNavigator: ScreenNavigator,
@@ -24,15 +21,17 @@ class SearchQuestPresenter(
     }
 
     override fun onStart() {
-        TODO("Not yet implemented")
+        view.registerListener(this)
+        backPressDispatcher.registerListener(this)
     }
 
     override fun onStop() {
-        TODO("Not yet implemented")
+        view.unregisterListener(this)
+        backPressDispatcher.unregisterListener(this)
     }
 
     override fun onDestroy() {
-        TODO("Not yet implemented")
+        coroutineScope.coroutineContext.cancelChildren()
     }
 
     override fun onFindButtonClicked() {
@@ -41,8 +40,13 @@ class SearchQuestPresenter(
         }
     }
 
+    override fun onQuestItemClicked(questItemId: Int) {
+        screenNavigator.toQuest(questItemId)
+    }
+
     override fun onBackPressed(): Boolean {
-        TODO("Not yet implemented")
+        screenNavigator.navigateUp()
+        return true
     }
 
 }

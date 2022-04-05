@@ -20,8 +20,8 @@
             android:id="@+id/search_fragment_search_field"
             android:layout_width="320dp"
             android:layout_height="50dp"
-            android:inputType="numberDecimal"
-            android:autofillHints="Some Quest" />
+            android:inputType="text"
+            android:importantForAutofill="no" />
 
         <Button
             android:id="@+id/search_fragment_find_quest_button"

@@ -24,6 +24,10 @@ class ScreenNavigator(
         fragNavController.pushFragment(SearchQuestFragment.newInstance())
     }
 
+    fun toQuest(questId: Int) {
+        //TODO
+    }
+
     override val numberOfRootFragments: Int
         get() = 1
 
