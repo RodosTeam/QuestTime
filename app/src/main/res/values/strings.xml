@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">questtime</string>
+    <string name="search_quests">Search quests</string>
+    <string name="find">find</string>
 </resources>
