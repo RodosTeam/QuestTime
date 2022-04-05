@@ -25,7 +25,7 @@ class MenuFragment : BaseFragment() {
 
     private fun setup() {
         btnToSearch.setOnClickListener {
-            mainActivity
+            mainActivity.screenNavigator.toSearchQuest()
         }
     }
 
