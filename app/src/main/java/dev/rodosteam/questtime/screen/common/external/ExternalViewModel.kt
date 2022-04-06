@@ -1,13 +1,13 @@
-package dev.rodosteam.questtime.ui.editor
+package dev.rodosteam.questtime.screen.common.external
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class EditorViewModel : ViewModel() {
+class ExternalViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is editor, WIP"
+        value = "This is external Fragment"
     }
     val text: LiveData<String> = _text
 }

@@ -1,19 +1,22 @@
-package dev.rodosteam.questtime.ui.library
+package dev.rodosteam.questtime.screen.common.library
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
+import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.FragmentLibraryBinding
+import dev.rodosteam.questtime.screen.common.base.BaseFragment
 
-class LibraryFragment : Fragment() {
+class LibraryFragment : BaseFragment() {
 
     private lateinit var libraryViewModel: LibraryViewModel
+
     private var _binding: FragmentLibraryBinding? = null
+
+    //private lateinit var recyclerView: RecyclerView
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -29,11 +32,7 @@ class LibraryFragment : Fragment() {
 
         _binding = FragmentLibraryBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val textView: TextView = binding.textLibrary
-        libraryViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        //recyclerView = root.findViewById(root.findViewById(R.id.external_recycler_view))
         return root
     }
 

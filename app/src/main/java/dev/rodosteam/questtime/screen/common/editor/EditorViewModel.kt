@@ -1,13 +1,13 @@
-package dev.rodosteam.questtime.ui.library
+package dev.rodosteam.questtime.screen.common.editor
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class LibraryViewModel : ViewModel() {
+class EditorViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is library Fragment"
+        value = "WIP Quest Editor"
     }
     val text: LiveData<String> = _text
 }

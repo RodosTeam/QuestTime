@@ -12,9 +12,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.ActivityMainBinding
+import dev.rodosteam.questtime.quest.model.QuestItem
 import dev.rodosteam.questtime.screen.common.nav.BackPressDispatcher
 import dev.rodosteam.questtime.screen.common.nav.BackPressedListener
-import dev.rodosteam.questtime.screen.common.nav.ScreenNavigator
 
 class MainActivity : AppCompatActivity(), BackPressDispatcher {
 
@@ -22,11 +22,38 @@ class MainActivity : AppCompatActivity(), BackPressDispatcher {
 
     private lateinit var binding: ActivityMainBinding
 
-    lateinit var screenNavigator: ScreenNavigator
+    private val quests = listOf(
+        QuestItem(
+            1,
+            "samplename1",
+            "sampledesc1",
+            0,
+            0,
+            0,
+            0
+        ),
+        QuestItem(
+            2,
+            "samplename2",
+            "sampledesc2",
+            0,
+            0,
+            0,
+            0
+        ),
+        QuestItem(
+            3,
+            "samplename3",
+            "sampledesc3",
+            0,
+            0,
+            0,
+            0
+        )
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //cringe
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -50,6 +77,7 @@ class MainActivity : AppCompatActivity(), BackPressDispatcher {
         menuInflater.inflate(R.menu.top_search_menu, menu)
 
         val menuItem = menu?.findItem(R.id.search_bar)
+
         val searchView = menuItem?.actionView as SearchView
 
         searchView.queryHint = this.getString(R.string.search_text)
@@ -69,7 +97,6 @@ class MainActivity : AppCompatActivity(), BackPressDispatcher {
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
         super.onSaveInstanceState(outState, outPersistentState)
-        screenNavigator.onSaveInstanceState(outState)
     }
 
     override fun registerListener(listener: BackPressedListener) {

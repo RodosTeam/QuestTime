@@ -1,4 +1,4 @@
-package dev.rodosteam.questtime.ui.settings
+package dev.rodosteam.questtime.screen.common.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import dev.rodosteam.questtime.databinding.FragmentSettingsBinding
+import dev.rodosteam.questtime.screen.common.base.BaseFragment
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : BaseFragment() {
 
     private lateinit var settingsViewModel: SettingsViewModel
     private var _binding: FragmentSettingsBinding? = null

@@ -1,4 +1,4 @@
-package dev.rodosteam.questtime.ui.editor
+package dev.rodosteam.questtime.screen.common.external
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import dev.rodosteam.questtime.databinding.FragmentEditorBinding
+import dev.rodosteam.questtime.databinding.FragmentExternalBinding
+import dev.rodosteam.questtime.screen.common.base.BaseFragment
 
-class EditorFragment : Fragment() {
+class ExternalFragment : BaseFragment() {
 
-    private lateinit var editorViewModel: EditorViewModel
-    private var _binding: FragmentEditorBinding? = null
+    private lateinit var externalViewModel: ExternalViewModel
+    private var _binding: FragmentExternalBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,16 +25,12 @@ class EditorFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        editorViewModel =
-            ViewModelProvider(this).get(EditorViewModel::class.java)
+        externalViewModel =
+            ViewModelProvider(this).get(ExternalViewModel::class.java)
 
-        _binding = FragmentEditorBinding.inflate(inflater, container, false)
+        _binding = FragmentExternalBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textEditor
-        editorViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         return root
     }
 

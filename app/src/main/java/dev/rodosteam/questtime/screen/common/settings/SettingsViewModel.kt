@@ -1,13 +1,13 @@
-package dev.rodosteam.questtime.ui.external
+package dev.rodosteam.questtime.screen.common.settings
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ExternalViewModel : ViewModel() {
+class SettingsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is external Fragment"
+        value = "WIP App Settings"
     }
     val text: LiveData<String> = _text
 }
