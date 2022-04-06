@@ -1,18 +1,17 @@
 package dev.rodosteam.questtime.quest.repo
 
-import dev.rodosteam.questtime.api.dto.QuestItemDto
 import dev.rodosteam.questtime.quest.model.QuestItem
 
 class QuestItemRepoImpl() : QuestItemRepo {
-    override fun findAll(): List<QuestItemDto> {
+    override fun findAll(): List<QuestItem> {
         TODO("Not yet implemented")
     }
 
-    override fun findById(id: Long): QuestItemDto {
+    override fun findById(id: Long): QuestItem {
         TODO("Not yet implemented")
     }
 
-    override fun findByName(name: String): QuestItemDto {
+    override fun findByName(name: String): QuestItem {
         TODO("Not yet implemented")
     }
 
