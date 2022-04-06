@@ -9,7 +9,11 @@
             android:id="@+id/navigation_library"
             android:name="dev.rodosteam.questtime.screen.common.library.LibraryFragment"
             android:label="@string/title_library"
-            tools:layout="@layout/fragment_library"/>
+            tools:layout="@layout/fragment_library">
+        <action
+            android:id="@+id/action_navigation_library_to_questPreviewFragment"
+            app:destination="@id/questPreviewFragment" />
+    </fragment>
 
     <fragment
             android:id="@+id/navigation_external"
@@ -28,4 +32,9 @@
             android:name="dev.rodosteam.questtime.screen.common.settings.SettingsFragment"
             android:label="@string/title_settings"
             tools:layout="@layout/fragment_settings"/>
+    <fragment
+        android:id="@+id/questPreviewFragment"
+        android:name="dev.rodosteam.questtime.screen.common.preview.QuestPreviewFragment"
+        android:label="fragment_library_preview"
+        tools:layout="@layout/fragment_library_preview" />
 </navigation>

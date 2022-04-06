@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
-import dev.rodosteam.questtime.R
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import dev.rodosteam.questtime.databinding.FragmentLibraryBinding
 import dev.rodosteam.questtime.screen.common.base.BaseFragment
 
@@ -16,8 +16,6 @@ class LibraryFragment : BaseFragment() {
 
     private var _binding: FragmentLibraryBinding? = null
 
-    private lateinit var recyclerView: RecyclerView
-
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -26,13 +24,13 @@ class LibraryFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        libraryViewModel =
-            ViewModelProvider(this).get(LibraryViewModel::class.java)
-
+    ): View {
+        libraryViewModel = ViewModelProvider(this)[LibraryViewModel::class.java]
         _binding = FragmentLibraryBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        return root
+        val adapter = QuestItemAdapter(app.findQuestItemRepo.findAll(), findNavController())
+        binding.libraryRecyclerView.adapter = adapter
+        binding.libraryRecyclerView.layoutManager = LinearLayoutManager(this.context)
+        return binding.root
     }
 
     override fun onDestroyView() {
