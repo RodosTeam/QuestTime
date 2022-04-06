@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/mobile_navigation"
+            app:startDestination="@+id/navigation_library">
+
+    <fragment
+            android:id="@+id/navigation_library"
+            android:name="dev.rodosteam.questtime.ui.library.LibraryFragment"
+            android:label="@string/title_library"
+            tools:layout="@layout/fragment_library"/>
+
+    <fragment
+            android:id="@+id/navigation_external"
+            android:name="dev.rodosteam.questtime.ui.external.ExternalFragment"
+            android:label="@string/title_external"
+            tools:layout="@layout/fragment_external"/>
+
+    <fragment
+            android:id="@+id/navigation_editor"
+            android:name="dev.rodosteam.questtime.ui.editor.EditorFragment"
+            android:label="@string/title_editor"
+            tools:layout="@layout/fragment_editor"/>
+
+    <fragment
+            android:id="@+id/navigation_settings"
+            android:name="dev.rodosteam.questtime.ui.settings.SettingsFragment"
+            android:label="@string/title_settings"
+            tools:layout="@layout/fragment_settings"/>
+</navigation>
