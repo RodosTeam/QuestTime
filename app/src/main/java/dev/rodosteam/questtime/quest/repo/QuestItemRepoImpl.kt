@@ -29,7 +29,7 @@ class QuestItemRepoImpl : QuestItemRepo {
 
     override fun findByName(name: String): QuestItem? {
         for (quest in questsList) {
-            if (quest.title == name) {
+            if (quest.title.contains(name)) {
                 return quest
             }
         }
