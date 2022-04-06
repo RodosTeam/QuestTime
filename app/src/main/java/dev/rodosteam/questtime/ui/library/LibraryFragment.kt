@@ -12,7 +12,7 @@ import dev.rodosteam.questtime.databinding.FragmentLibraryBinding
 
 class LibraryFragment : Fragment() {
 
-    private lateinit var homeViewModel: LibraryViewModel
+    private lateinit var libraryViewModel: LibraryViewModel
     private var _binding: FragmentLibraryBinding? = null
 
     // This property is only valid between onCreateView and
@@ -24,14 +24,14 @@ class LibraryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
+        libraryViewModel =
             ViewModelProvider(this).get(LibraryViewModel::class.java)
 
         _binding = FragmentLibraryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textLibrary
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        libraryViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

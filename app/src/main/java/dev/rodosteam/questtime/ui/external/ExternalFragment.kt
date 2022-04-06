@@ -12,7 +12,7 @@ import dev.rodosteam.questtime.databinding.FragmentExternalBinding
 
 class ExternalFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: ExternalViewModel
+    private lateinit var externalViewModel: ExternalViewModel
     private var _binding: FragmentExternalBinding? = null
 
     // This property is only valid between onCreateView and
@@ -24,14 +24,14 @@ class ExternalFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
+        externalViewModel =
             ViewModelProvider(this).get(ExternalViewModel::class.java)
 
         _binding = FragmentExternalBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textExternal
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+        externalViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

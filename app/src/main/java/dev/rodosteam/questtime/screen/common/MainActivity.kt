@@ -2,6 +2,8 @@ package dev.rodosteam.questtime.screen.common
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.Menu
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -24,8 +26,6 @@ class MainActivity : AppCompatActivity(), BackPressDispatcher {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
-        //screenNavigator = ScreenNavigator(supportFragmentManager, savedInstanceState)
         //cringe
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -40,8 +40,31 @@ class MainActivity : AppCompatActivity(), BackPressDispatcher {
                 R.id.navigation_library, R.id.navigation_external, R.id.navigation_editor, R.id.navigation_settings
             )
         )
+        // give names on top
         setupActionBarWithNavController(navController, appBarConfiguration)
+        // navigation via navbar
         navView.setupWithNavController(navController)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_search_menu, menu)
+
+        val menuItem = menu?.findItem(R.id.search_bar)
+        val searchView = menuItem?.actionView as SearchView
+
+        searchView.queryHint = this.getString(R.string.search_text)
+    /*
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(p0: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+        })
+*/
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
@@ -69,3 +92,4 @@ class MainActivity : AppCompatActivity(), BackPressDispatcher {
         }
     }
 }
+

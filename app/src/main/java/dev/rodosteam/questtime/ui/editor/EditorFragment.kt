@@ -12,7 +12,7 @@ import dev.rodosteam.questtime.databinding.FragmentEditorBinding
 
 class EditorFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: EditorViewModel
+    private lateinit var editorViewModel: EditorViewModel
     private var _binding: FragmentEditorBinding? = null
 
     // This property is only valid between onCreateView and
@@ -24,14 +24,14 @@ class EditorFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
+        editorViewModel =
             ViewModelProvider(this).get(EditorViewModel::class.java)
 
         _binding = FragmentEditorBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textEditor
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
+        editorViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
