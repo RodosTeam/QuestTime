@@ -3,40 +3,35 @@ package dev.rodosteam.questtime.quest.repo
 import dev.rodosteam.questtime.quest.model.QuestItem
 
 class QuestItemRepoImpl : QuestItemRepo {
-    private val questsList = arrayListOf<QuestItem>()
+    private var quests = mutableMapOf<Int, QuestItem>()
 
     init {
         val questsInfo = QuestsInfo()
-        questsList.add(questsInfo.generateRandomQuest(1))
-        questsList.add(questsInfo.generateRandomQuest(2))
-        questsList.add(questsInfo.generateRandomQuest(3))
-        questsList.add(questsInfo.generateRandomQuest(4))
-        questsList.add(questsInfo.generateRandomQuest(5))
+        quests[1] = questsInfo.generateRandomQuest(1)
+        quests[2] = questsInfo.generateRandomQuest(2)
+        quests[3] = questsInfo.generateRandomQuest(3)
+        quests[4] = questsInfo.generateRandomQuest(4)
+        quests[5] = questsInfo.generateRandomQuest(5)
     }
 
     override fun findAll(): List<QuestItem> {
-        return questsList
+        return quests.values.toList()
     }
 
     override fun findById(id: Int): QuestItem? {
-        for (quest in questsList) {
-            if (quest.id == id) {
-                return quest
-            }
-        }
-        return null
+        return quests[id]
     }
 
     override fun findByName(name: String): QuestItem? {
-        for (quest in questsList) {
-            if (quest.title.contains(name)) {
-                return quest
+        for (quest in quests) {
+            if (quest.value.title.contains(name)) {
+                return quest.value
             }
         }
         return null
     }
 
     override fun add(item: QuestItem): Boolean {
-        return questsList.add(item)
+        return quests.put(item.id, item) == null
     }
 }
