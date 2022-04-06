@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:id="@+id/blog_item_fragment__IIContent"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/fragment_library_item__main"
               android:layout_width="match_parent"
               android:layout_height="120dp"
               android:paddingTop="8dp"
@@ -12,11 +12,12 @@
 
     <ImageView
             android:layout_width="104dp"
-            android:id="@+id/imageView"
+            android:id="@+id/fragment_library_item__image"
             android:layout_height="104dp" tools:srcCompat="@tools:sample/backgrounds/scenic"
-            android:scaleType="fitXY" android:contentDescription="@string/image_description"/>
+            android:scaleType="fitXY" android:contentDescription="@string/image_description" android:padding="1dp"
+            android:background="?colorPrimary"/>
     <LinearLayout
-            android:id="@+id/blog_item_fragment__main"
+            android:id="@+id/fragment_library_item__data"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -24,26 +25,33 @@
             android:paddingBottom="8dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:background="?android:attr/selectableItemBackground" android:layout_weight="4">
+            android:background="?android:attr/selectableItemBackground" android:layout_weight="6">
 
         <TextView
-                android:id="@+id/quest_item_fragment__titleTv"
+                android:id="@+id/fragment_library_item__title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:text="@string/default_title"
                 android:paddingBottom="4dp" android:textAlignment="viewStart" android:maxLines="1"
                 android:ellipsize="end" android:textStyle="bold"/>
 
         <TextView
-                android:id="@+id/quest_item_fragment__descriptionTv"
+                android:id="@+id/fragment_library_item__description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:maxLines="3"
+                android:maxLines="4"
                 android:text="@string/lorem_ipsum"
-                android:textSize="14sp" android:textAlignment="viewStart"/>
+                android:textSize="12sp" android:textAlignment="viewStart"/>
 
     </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fragment_library_item__applyButton"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_download_white_24dp" android:backgroundTint="?colorPrimary"
+            app:useCompatPadding="true" app:borderWidth="0dp"/>
 
 </LinearLayout>

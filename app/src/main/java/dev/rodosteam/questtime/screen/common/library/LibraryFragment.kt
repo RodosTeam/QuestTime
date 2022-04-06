@@ -16,7 +16,7 @@ class LibraryFragment : BaseFragment() {
 
     private var _binding: FragmentLibraryBinding? = null
 
-    //private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerView: RecyclerView
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -32,7 +32,6 @@ class LibraryFragment : BaseFragment() {
 
         _binding = FragmentLibraryBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        //recyclerView = root.findViewById(root.findViewById(R.id.external_recycler_view))
         return root
     }
 

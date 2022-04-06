@@ -14,9 +14,9 @@ class SearchQuestRowMvpViewImpl(
     private val listener: SearchQuestRowMvpView.Listener
 ) : MvpViewBase(), SearchQuestRowMvpView {
 
-    override var rootView: View = layoutInflater.inflate(R.layout.fragment_search_items_row, parent, false)
-    private val tvTitle: TextView = findViewById(R.id.quest_item_fragment__titleTv)
-    private val tvDescription: TextView = findViewById(R.id.quest_item_fragment__descriptionTv)
+    override var rootView: View = layoutInflater.inflate(R.layout.fragment_library_item, parent, false)
+    private val tvTitle: TextView = findViewById(R.id.fragment_library_preview__title)
+    private val tvDescription: TextView = findViewById(R.id.fragment_library_preview__description)
 
     private lateinit var blogItem: QuestItem
 

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        tools:context=".screen.common.preview.QuestPreviewFragment"
+        android:id="@+id/fragment_library_preview_layout">
+
+    <ScrollView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/fragment_library_preview__scroll_view"
+    >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                tools:context=".screen.common.preview.QuestPreviewFragment"
+                android:id="@+id/fragment_library_preview__main_layout">
+
+            <LinearLayout
+                    android:id="@+id/fragment_library_preview__main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                        android:layout_width="156dp"
+                        android:id="@+id/fragment_library_preview__image"
+                        android:layout_height="156dp" tools:srcCompat="@tools:sample/backgrounds/scenic"
+                        android:scaleType="fitXY" android:contentDescription="@string/image_description"
+                        android:layout_gravity="center"/>
+                <LinearLayout
+                        android:id="@+id/fragment_library_preview__data"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:layout_weight="4"
+                        android:gravity="center">
+
+                    <TextView
+                            android:id="@+id/fragment_library_preview__title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/default_title"
+                            android:textSize="28sp"
+                            android:gravity="bottom"
+                            android:paddingBottom="4dp"
+                            android:maxLines="8"
+                            android:ellipsize="end"
+                            android:textStyle="bold"/>
+                    <TextView
+                            android:id="@+id/fragment_library_preview__author"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:text="@string/default_author"
+                            android:paddingBottom="4dp"
+                            android:textAlignment="viewStart"/>
+                    <TextView
+                            android:id="@+id/fragment_library_preview__info"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:text="@string/default_info"
+                            android:paddingBottom="4dp"
+                            android:textAlignment="viewStart"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/fragment_library_preview__actions"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_library_preview__main"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+                <Button
+                        android:text="@string/download_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:id="@+id/fragment_library_preview__left_button"
+                        android:layout_weight="1"
+                        android:layout_marginTop="2dp" android:layout_marginBottom="2dp"
+                        android:layout_marginLeft="16dp" android:layout_marginRight="16dp"/>
+                <Button
+                        android:text="@string/favorite_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:id="@+id/fragment_library_preview__right_button" android:layout_weight="1"
+                        android:layout_marginTop="2dp" android:layout_marginBottom="2dp"
+                        android:layout_marginLeft="16dp" android:layout_marginRight="16dp"/>
+            </LinearLayout>
+            <View
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_library_preview__actions"
+                    android:id="@+id/fragment_library_preview__separator"
+                    android:layout_height="1dp" android:layout_width="0dp" android:background="#807E7E7E"/>
+            <TextView
+                    android:id="@+id/fragment_library_preview__description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:text="@string/lorem_ipsum2"
+                    android:textSize="20sp"
+                    android:gravity="top"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:padding="8dp" app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_library_preview__separator"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="80dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fragment_library_preview__playButton"
+            android:src="@drawable/ic_play_white_24dp"
+            android:backgroundTint="?colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:borderWidth="0dp"
+            app:useCompatPadding="true"
+            app:backgroundTint="?colorPrimaryVariant"
+            android:contentDescription="@string/download_and_play_button"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
