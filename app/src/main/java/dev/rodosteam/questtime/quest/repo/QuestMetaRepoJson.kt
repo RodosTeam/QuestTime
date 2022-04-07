@@ -18,4 +18,8 @@ class QuestMetaRepoJson : QuestItemRepo {
     override fun add(item: QuestItem): Boolean {
         TODO("Not yet implemented")
     }
+
+    override fun remove(id: Int): QuestItem? {
+        TODO("Not yet implemented")
+    }
 }
