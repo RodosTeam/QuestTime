@@ -4,8 +4,8 @@ data class QuestItem(
     val id: Int,
     val title: String,
     val description: String,
-    val playCount: Int,
-    val upVotes: Int,
-    val downVotes: Int,
+    val author: String,
+    val downloads: Int,
+    val favorites: Int,
     val created: Long,
 )

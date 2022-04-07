@@ -32,6 +32,8 @@ class QuestPreviewFragment : BaseFragment() {
         quest?.let {
             binding.fragmentLibraryPreviewTitle.text = it.title
             binding.fragmentLibraryPreviewDescription.text = it.description
+            binding.fragmentLibraryPreviewAuthor.text = it.author
+            binding.fragmentLibraryPreviewInfo.text = "${it.downloads} установок"
         }
         return binding.root
     }

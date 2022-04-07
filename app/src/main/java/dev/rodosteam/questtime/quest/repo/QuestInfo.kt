@@ -4,12 +4,22 @@ import dev.rodosteam.questtime.quest.model.QuestItem
 
 class QuestsInfo {
     private val minInt = 0
-    private val maxInt = 100
+    private val maxInt = 500
+
+    private val authorNames = arrayListOf(
+        "Lev Saskov",
+        "Alina Shestakova",
+        "Хидетака Миядзаки",
+        "Стивен Спилберг",
+        "Хидео Кодзима"
+    )
 
     private val questsTitles = arrayListOf(
         "Шрек",
         "Алиса в стране чудес",
-        "Скуби Ду"
+        "Скуби Ду",
+        "Герои меча и магии",
+        "Dungeons and dragons"
     )
 
     private val questsDescription = arrayListOf(
@@ -37,16 +47,23 @@ class QuestsInfo {
                 "мечтая помогать городским властям справляться с различными преступниками. " +
                 "Вскоре наступает момент, когда отважным сыщикам приходится столкнуться с реальной опасностью: " +
                 "Подлый Дик собирается выпустить на свободу Цербера, жуткую собаку-призрака, " +
-                "а отчаянная команда должна любой ценой остановить приближающийся апокалипсис."
+                "а отчаянная команда должна любой ценой остановить приближающийся апокалипсис.",
+        "Heroes of Might and Magic (рус. Герои Меча и Магии, разг. «Герои») – серия фэнтезийных" +
+                " компьютерных игр в жанре пошаговой стратегии с ролевыми элементами, насчитывающая" +
+                " в общей сложности семь основных частей и одиннадцать дополнений к ним.",
+        "Не слушай никого, кто скажет, будто ты чего-то не можешь. Даже меня. Понял? Если есть мечта — оберегай её.\n" +
+                " Люди, которые чего-то не могут, будут уверять, что и у тебя тоже не выйдет. Поставил цель — добейся! И точка."
     )
 
-    fun generateRandomQuest(id : Int) : QuestItem {
-        return QuestItem(id,
+    fun generateRandomQuest(id: Int): QuestItem {
+        return QuestItem(
+            id,
             questsTitles.random(),
             questsDescription.random(),
+            authorNames.random(),
             (minInt..maxInt).random(),
             (minInt..maxInt).random(),
-            (minInt..maxInt).random(),
-            1)
+            1L
+        )
     }
 }
