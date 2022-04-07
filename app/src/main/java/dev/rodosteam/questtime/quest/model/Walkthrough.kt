@@ -24,7 +24,6 @@ class Walkthrough private constructor(
      *
      * @return возвращает предыдущее состояние
      */
-    // TODO: Не дать удалить из history
     fun goBack() = Walkthrough(content, history.dropLast(1))
 
     /**
