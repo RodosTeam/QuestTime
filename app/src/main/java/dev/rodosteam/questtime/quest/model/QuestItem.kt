@@ -8,4 +8,5 @@ data class QuestItem(
     val downloads: Int,
     val favorites: Int,
     val created: Long,
+    val filename: String
 )

@@ -63,7 +63,9 @@ class QuestsInfo {
             authorNames.random(),
             (minInt..maxInt).random(),
             (minInt..maxInt).random(),
-            1L
+            1L,
+            //TODO: filename
+            ""
         )
     }
 }
