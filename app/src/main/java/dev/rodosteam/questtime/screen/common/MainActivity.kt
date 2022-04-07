@@ -5,7 +5,6 @@ import android.os.PersistableBundle
 import android.view.Menu
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -13,13 +12,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.ActivityMainBinding
-import dev.rodosteam.questtime.quest.model.QuestItem
-import dev.rodosteam.questtime.screen.common.nav.BackPressDispatcher
-import dev.rodosteam.questtime.screen.common.nav.BackPressedListener
 
-class MainActivity : AppCompatActivity(), BackPressDispatcher {
+class MainActivity : AppCompatActivity() {
 
-    private val backPressedListeners: MutableSet<BackPressedListener> = HashSet()
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,24 +48,5 @@ class MainActivity : AppCompatActivity(), BackPressDispatcher {
         super.onSaveInstanceState(outState, outPersistentState)
     }
 
-    override fun registerListener(listener: BackPressedListener) {
-        backPressedListeners.add(listener)
-    }
-
-    override fun unregisterListener(listener: BackPressedListener) {
-        backPressedListeners.remove(listener)
-    }
-
-    override fun onBackPressed() {
-        var isBackPressConsumedByAnyListener = false
-        backPressedListeners.forEach { listener ->
-            if (listener.onBackPressed()) {
-                isBackPressConsumedByAnyListener = true
-            }
-        }
-        if (!isBackPressConsumedByAnyListener) {
-            super.onBackPressed()
-        }
-    }
 }
 
