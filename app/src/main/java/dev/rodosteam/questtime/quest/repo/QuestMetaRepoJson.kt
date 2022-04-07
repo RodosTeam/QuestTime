@@ -7,6 +7,10 @@ class QuestMetaRepoJson : QuestItemRepo {
         TODO("Not yet implemented")
     }
 
+    override fun findAllByName(name: String): List<QuestItem> {
+        TODO("Not yet implemented")
+    }
+
     override fun findById(id: Int): QuestItem? {
         TODO("Not yet implemented")
     }

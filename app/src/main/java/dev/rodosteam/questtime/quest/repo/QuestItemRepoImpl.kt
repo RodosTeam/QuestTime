@@ -16,6 +16,11 @@ class QuestItemRepoImpl : QuestItemRepo {
         return quests.values.toList()
     }
 
+    override fun findAllByName(name: String): List<QuestItem> {
+        name.lowercase()
+        return quests.values.filter { it.title.lowercase().contains(name) }
+    }
+
     override fun findById(id: Int): QuestItem? {
         return quests[id]
     }
