@@ -33,6 +33,9 @@ class QuestPreviewFragment : BaseFragment() {
     ): View {
         viewModel = ViewModelProvider(this)[QuestPreviewViewModel::class.java]
         _binding = FragmentLibraryPreviewBinding.inflate(inflater, container, false)
+        if (arguments == null) {
+            return binding.root
+        }
         val id = arguments!!.getInt(QUEST_KEY)
         val quest = app.findQuestItemRepo.findById(id)
         quest?.let {
@@ -45,8 +48,8 @@ class QuestPreviewFragment : BaseFragment() {
         val downloaded = arguments!!.getBoolean(DOWNLOADED_KEY)
         if (downloaded) {
             if (quest == null) {
-                //TODO
-                throw IllegalStateException("Opened unknown quest")
+                findNavController().navigateUp()
+                return binding.root
             }
             setQuestDownloaded(quest)
         } else {
@@ -59,6 +62,7 @@ class QuestPreviewFragment : BaseFragment() {
 
     private fun setQuestDownloaded(quest: QuestItem) {
         binding.fragmentPreviewLeftButton.text = "Delete"
+        binding.fragmentPreviewPlayButton.visibility = View.VISIBLE
         binding.fragmentPreviewPlayButton.setOnClickListener {
             findNavController().navigate(
                 R.id.action_questPreviewFragment_to_questContentFragment,
@@ -67,13 +71,22 @@ class QuestPreviewFragment : BaseFragment() {
         }
         binding.fragmentPreviewLeftButton.setOnClickListener {
             app.findQuestItemRepo.remove(quest.id)
-            setQuestDeleted()
+            setQuestDeleted(quest)
         }
     }
 
-    private fun setQuestDeleted() {
+    private fun setQuestDeleted(quest: QuestItem) {
         binding.fragmentPreviewLeftButton.text = "Download"
         binding.fragmentPreviewPlayButton.visibility = View.GONE
+        binding.fragmentPreviewLeftButton
+        binding.fragmentPreviewLeftButton.setOnClickListener {
+            downloadQuest(quest)
+        }
+    }
+
+    private fun downloadQuest(quest: QuestItem) {
+        app.findQuestItemRepo.add(quest)
+        setQuestDownloaded(quest)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
