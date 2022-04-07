@@ -1,16 +1,16 @@
 package dev.rodosteam.questtime.screen.library
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.FragmentLibraryBinding
-import dev.rodosteam.questtime.screen.common.base.BaseFragment
+import dev.rodosteam.questtime.screen.common.base.BaseFragmentWithOptionMenu
 
-class LibraryFragment : BaseFragment() {
+class LibraryFragment : BaseFragmentWithOptionMenu() {
 
     private lateinit var libraryViewModel: LibraryViewModel
 
@@ -25,12 +25,21 @@ class LibraryFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        super.onCreateView(inflater, container, savedInstanceState)
         libraryViewModel = ViewModelProvider(this)[LibraryViewModel::class.java]
         _binding = FragmentLibraryBinding.inflate(inflater, container, false)
         val adapter = QuestItemAdapter(app.findQuestItemRepo.findAll(), findNavController())
         binding.libraryRecyclerView.adapter = adapter
         binding.libraryRecyclerView.layoutManager = LinearLayoutManager(this.context)
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.top_search_menu, menu)
+        val menuItem = menu.findItem(R.id.search_bar)
+        val searchView = menuItem?.actionView as SearchView
+        searchView.queryHint = this.getString(R.string.search_text)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onDestroyView() {

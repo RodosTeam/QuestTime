@@ -2,16 +2,13 @@ package dev.rodosteam.questtime.screen.preview
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.FragmentLibraryPreviewBinding
 import dev.rodosteam.questtime.quest.model.QuestItem
 import dev.rodosteam.questtime.screen.common.base.BaseFragment
-import java.lang.IllegalStateException
 
 class QuestPreviewFragment : BaseFragment() {
 
