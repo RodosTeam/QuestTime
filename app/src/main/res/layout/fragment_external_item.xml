@@ -1,69 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/fragment_library_item__main"
-    android:layout_width="match_parent"
-    android:layout_height="120dp"
-    android:background="?android:attr/selectableItemBackground"
-    android:paddingLeft="8dp"
-    android:paddingTop="8dp"
-    android:paddingRight="8dp"
-    android:paddingBottom="8dp">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/fragment_library_item__main"
+              android:layout_width="match_parent"
+              android:layout_height="120dp"
+              android:background="?android:attr/selectableItemBackground"
+              android:paddingLeft="8dp"
+              android:paddingTop="8dp"
+              android:paddingRight="8dp"
+              android:paddingBottom="8dp">
 
     <ImageView
-        android:id="@+id/fragment_library_item__image"
-        android:layout_width="104dp"
-        android:layout_height="104dp"
-        android:background="?colorPrimary"
-        android:contentDescription="@string/image_description"
-        android:padding="1dp"
-        android:scaleType="fitXY" />
+            android:id="@+id/fragment_library_item__image"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:background="?colorPrimary"
+            android:contentDescription="@string/image_description"
+            android:padding="1dp"
+            android:scaleType="fitXY"
+            tools:srcCompat="@tools:sample/backgrounds/scenic[0]"/>
 
     <LinearLayout
-        android:id="@+id/fragment_library_item__data"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="6"
-        android:background="?android:attr/selectableItemBackground"
-        android:orientation="vertical"
-        android:paddingLeft="16dp"
-        android:paddingTop="8dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="8dp">
+            android:id="@+id/fragment_library_item__data"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp">
 
         <TextView
-            android:id="@+id/fragment_library_item__title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:paddingBottom="4dp"
-            android:text="@string/default_title"
-            android:textAlignment="viewStart"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+                android:id="@+id/fragment_library_item__title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingBottom="4dp"
+                android:text="@string/default_title"
+                android:textAlignment="viewStart"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/fragment_library_item__description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="4"
-            android:text="@string/lorem_ipsum"
-            android:textAlignment="viewStart"
-            android:textSize="12sp" />
+                android:id="@+id/fragment_library_item__description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:text="@string/lorem_ipsum"
+                android:textAlignment="viewStart"
+                android:textSize="12sp"/>
 
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fragment_library_item__applyButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="?colorPrimary"
-        android:contentDescription="@string/play"
-        android:src="@drawable/ic_download_white_24dp"
-        app:borderWidth="0dp"
-        app:useCompatPadding="true" />
+            android:id="@+id/fragment_library_item__applyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="?colorPrimary"
+            android:contentDescription="@string/play"
+            android:src="@drawable/ic_download_white_24dp"
+            app:borderWidth="0dp"
+            app:useCompatPadding="true"/>
 
 </LinearLayout>

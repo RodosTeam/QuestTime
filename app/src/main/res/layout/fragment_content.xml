@@ -5,15 +5,16 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screen.editor.EditorFragment">
+        tools:context=".screen.questContent.QuestContentFragment">
 
     <TextView
-            android:id="@+id/text_editor"
+            android:id="@+id/fragment_content__content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:text="@string/some_content"
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
