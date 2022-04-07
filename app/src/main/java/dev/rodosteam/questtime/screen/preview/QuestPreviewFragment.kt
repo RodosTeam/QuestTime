@@ -36,6 +36,8 @@ class QuestPreviewFragment : BaseFragment() {
         val id = arguments!!.getInt(QUEST_KEY)
         val quest = app.findQuestItemRepo.findById(id)
         quest?.let {
+            // TODO do good
+            mainActivity.supportActionBar?.title = it.title
             binding.fragmentPreviewTitle.text = it.title
             binding.fragmentPreviewDescription.text = it.description
             binding.fragmentPreviewAuthor.text = it.author
