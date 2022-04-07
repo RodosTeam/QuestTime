@@ -1,4 +1,4 @@
-package dev.rodosteam.questtime.screen.common.preview
+package dev.rodosteam.questtime.screen.preview
 
 import androidx.lifecycle.ViewModel
 

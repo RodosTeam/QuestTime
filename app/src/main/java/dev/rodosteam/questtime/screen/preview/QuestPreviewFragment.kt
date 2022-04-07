@@ -1,15 +1,12 @@
-package dev.rodosteam.questtime.screen.common.preview
+package dev.rodosteam.questtime.screen.preview
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import dev.rodosteam.questtime.R
-import dev.rodosteam.questtime.databinding.FragmentLibraryBinding
 import dev.rodosteam.questtime.databinding.FragmentLibraryPreviewBinding
 import dev.rodosteam.questtime.screen.common.base.BaseFragment
-import dev.rodosteam.questtime.screen.common.library.LibraryViewModel
 
 class QuestPreviewFragment : BaseFragment() {
 

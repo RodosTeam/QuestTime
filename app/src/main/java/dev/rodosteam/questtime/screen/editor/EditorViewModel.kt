@@ -1,4 +1,4 @@
-package dev.rodosteam.questtime.screen.common.editor
+package dev.rodosteam.questtime.screen.editor
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

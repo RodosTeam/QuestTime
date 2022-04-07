@@ -1,4 +1,4 @@
-package dev.rodosteam.questtime.screen.common.library
+package dev.rodosteam.questtime.screen.library
 
 import androidx.lifecycle.ViewModel
 

@@ -6,7 +6,7 @@
     android:id="@+id/fragment_library_preview_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screen.common.preview.QuestPreviewFragment">
+    tools:context=".screen.preview.QuestPreviewFragment">
 
     <ScrollView
         android:id="@+id/fragment_library_preview__scroll_view"
@@ -20,7 +20,7 @@
             android:id="@+id/fragment_library_preview__main_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".screen.common.preview.QuestPreviewFragment">
+            tools:context=".screen.preview.QuestPreviewFragment">
 
             <LinearLayout
                 android:id="@+id/fragment_library_preview__main"

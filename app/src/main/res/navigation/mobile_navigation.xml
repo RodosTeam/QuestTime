@@ -7,7 +7,7 @@
 
     <fragment
             android:id="@+id/navigation_library"
-            android:name="dev.rodosteam.questtime.screen.common.library.LibraryFragment"
+            android:name="dev.rodosteam.questtime.screen.library.LibraryFragment"
             android:label="@string/title_library"
             tools:layout="@layout/fragment_library">
         <action
@@ -17,24 +17,24 @@
 
     <fragment
             android:id="@+id/navigation_external"
-            android:name="dev.rodosteam.questtime.screen.common.external.ExternalFragment"
+            android:name="dev.rodosteam.questtime.screen.external.ExternalFragment"
             android:label="@string/title_external"
             tools:layout="@layout/fragment_external"/>
 
     <fragment
             android:id="@+id/navigation_editor"
-            android:name="dev.rodosteam.questtime.screen.common.editor.EditorFragment"
+            android:name="dev.rodosteam.questtime.screen.editor.EditorFragment"
             android:label="@string/title_editor"
             tools:layout="@layout/fragment_editor"/>
 
     <fragment
             android:id="@+id/navigation_settings"
-            android:name="dev.rodosteam.questtime.screen.common.settings.SettingsFragment"
+            android:name="dev.rodosteam.questtime.screen.settings.SettingsFragment"
             android:label="@string/title_settings"
             tools:layout="@layout/fragment_settings"/>
     <fragment
         android:id="@+id/questPreviewFragment"
-        android:name="dev.rodosteam.questtime.screen.common.preview.QuestPreviewFragment"
+        android:name="dev.rodosteam.questtime.screen.preview.QuestPreviewFragment"
         android:label="fragment_library_preview"
         tools:layout="@layout/fragment_library_preview" />
 </navigation>

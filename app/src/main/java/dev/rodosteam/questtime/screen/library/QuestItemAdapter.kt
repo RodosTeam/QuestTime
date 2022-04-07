@@ -1,4 +1,4 @@
-package dev.rodosteam.questtime.screen.common.library
+package dev.rodosteam.questtime.screen.library
 
 import android.view.LayoutInflater
 import android.view.View
