@@ -5,7 +5,6 @@ import android.os.PersistableBundle
 import android.view.Menu
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -13,7 +12,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.ActivityMainBinding
-import dev.rodosteam.questtime.quest.model.QuestItem
 import dev.rodosteam.questtime.screen.common.nav.BackPressDispatcher
 import dev.rodosteam.questtime.screen.common.nav.BackPressedListener
 

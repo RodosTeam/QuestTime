@@ -9,9 +9,8 @@ import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.FragmentLibraryPreviewBinding
-import dev.rodosteam.questtime.quest.model.QuestItem
+import dev.rodosteam.questtime.quest.model.QuestMeta
 import dev.rodosteam.questtime.screen.common.base.BaseFragment
-import java.lang.IllegalStateException
 
 class QuestPreviewFragment : BaseFragment() {
 
@@ -60,7 +59,7 @@ class QuestPreviewFragment : BaseFragment() {
         return binding.root
     }
 
-    private fun setQuestDownloaded(quest: QuestItem) {
+    private fun setQuestDownloaded(quest: QuestMeta) {
         binding.fragmentPreviewLeftButton.text = "Delete"
         binding.fragmentPreviewPlayButton.visibility = View.VISIBLE
         binding.fragmentPreviewPlayButton.setOnClickListener {
@@ -75,7 +74,7 @@ class QuestPreviewFragment : BaseFragment() {
         }
     }
 
-    private fun setQuestDeleted(quest: QuestItem) {
+    private fun setQuestDeleted(quest: QuestMeta) {
         binding.fragmentPreviewLeftButton.text = "Download"
         binding.fragmentPreviewPlayButton.visibility = View.GONE
         binding.fragmentPreviewLeftButton
@@ -84,7 +83,7 @@ class QuestPreviewFragment : BaseFragment() {
         }
     }
 
-    private fun downloadQuest(quest: QuestItem) {
+    private fun downloadQuest(quest: QuestMeta) {
         app.findQuestItemRepo.add(quest)
         setQuestDownloaded(quest)
     }

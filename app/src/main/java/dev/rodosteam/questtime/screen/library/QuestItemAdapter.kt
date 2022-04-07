@@ -9,12 +9,12 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.rodosteam.questtime.R
-import dev.rodosteam.questtime.quest.model.QuestItem
+import dev.rodosteam.questtime.quest.model.QuestMeta
 import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.DOWNLOADED_KEY
 import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.QUEST_KEY
 
 class QuestItemAdapter(
-    private val quests: List<QuestItem>,
+    private val quests: List<QuestMeta>,
     private val navController: NavController
 ) :
     RecyclerView.Adapter<QuestItemAdapter.QuestItemHolder>() {
@@ -30,7 +30,7 @@ class QuestItemAdapter(
         var playButton: FloatingActionButton =
             view.findViewById(R.id.fragment_library_item__playButton)
 
-        fun bind(item: QuestItem) {
+        fun bind(item: QuestMeta) {
             titleTv.text = item.title
             descriptionTv.text = item.description
         }

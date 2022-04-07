@@ -1,0 +1,14 @@
+{
+  "questsMeta": [
+    {
+      "id": -1,
+      "title": "Test quest",
+      "description": "Test quest description",
+      "author": "Lev Saskov",
+      "downloads": 0,
+      "favorites": 0,
+      "created": 0,
+      "filename": "test_quest.json"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-package dev.rodosteam.questtime.quest.repo
+package dev.rodosteam.questtime.quest.repo.content
 
 import dev.rodosteam.questtime.quest.model.QuestContent
 
