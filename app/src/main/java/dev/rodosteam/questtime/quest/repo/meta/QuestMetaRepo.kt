@@ -1,5 +1,5 @@
 package dev.rodosteam.questtime.quest.repo.meta
-// TODO: rename to QuestMetaRepo
+
 import dev.rodosteam.questtime.quest.model.QuestMeta
 
 interface QuestMetaRepo {
