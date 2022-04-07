@@ -7,4 +7,5 @@ interface QuestItemRepo {
     fun findById(id: Int): QuestItem?
     fun findByName(name: String) : QuestItem?
     fun add(item: QuestItem): Boolean
+    fun remove(id: Int): QuestItem?
 }

@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.quest.model.QuestItem
+import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.DOWNLOADED_KEY
+import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.QUEST_KEY
 
 class QuestItemAdapter(
     private val quests: List<QuestItem>,
@@ -25,7 +27,7 @@ class QuestItemAdapter(
         private var titleTv: TextView = view.findViewById(R.id.fragment_library_item__title)
         private var descriptionTv: TextView =
             view.findViewById(R.id.fragment_library_item__description)
-        public var playButton: FloatingActionButton =
+        var playButton: FloatingActionButton =
             view.findViewById(R.id.fragment_library_item__playButton)
 
         fun bind(item: QuestItem) {
@@ -45,13 +47,16 @@ class QuestItemAdapter(
         holder.playButton.setOnClickListener {
             navController.navigate(
                 R.id.action_navigation_library_to_questContentFragment,
-                bundleOf("quest" to quests[position].id)
+                bundleOf(QUEST_KEY to quests[position].id)
             )
         }
         holder.view.setOnClickListener {
             navController.navigate(
                 R.id.action_navigation_library_to_questPreviewFragment,
-                bundleOf("quest" to quests[position].id)
+                bundleOf(
+                    QUEST_KEY to quests[position].id,
+                    DOWNLOADED_KEY to true
+                )
             )
         }
     }

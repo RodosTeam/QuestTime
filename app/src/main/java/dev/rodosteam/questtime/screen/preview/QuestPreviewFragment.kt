@@ -9,11 +9,17 @@ import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.FragmentLibraryPreviewBinding
+import dev.rodosteam.questtime.quest.model.QuestItem
 import dev.rodosteam.questtime.screen.common.base.BaseFragment
+import java.lang.IllegalStateException
 
 class QuestPreviewFragment : BaseFragment() {
 
     companion object {
+
+        const val QUEST_KEY = "quest"
+        const val DOWNLOADED_KEY = "downloaded"
+
         fun newInstance() = QuestPreviewFragment()
     }
 
@@ -27,21 +33,47 @@ class QuestPreviewFragment : BaseFragment() {
     ): View {
         viewModel = ViewModelProvider(this)[QuestPreviewViewModel::class.java]
         _binding = FragmentLibraryPreviewBinding.inflate(inflater, container, false)
-        val id = arguments!!.getInt("quest")
+        val id = arguments!!.getInt(QUEST_KEY)
         val quest = app.findQuestItemRepo.findById(id)
         quest?.let {
-            binding.fragmentLibraryPreviewTitle.text = it.title
-            binding.fragmentLibraryPreviewDescription.text = it.description
-            binding.fragmentLibraryPreviewAuthor.text = it.author
-            binding.fragmentLibraryPreviewInfo.text = "${it.downloads} установок"
+            binding.fragmentPreviewTitle.text = it.title
+            binding.fragmentPreviewDescription.text = it.description
+            binding.fragmentPreviewAuthor.text = it.author
+            binding.fragmentPreviewInfo.text = "${it.downloads} установок"
         }
-        binding.fragmentLibraryPreviewPlayButton.setOnClickListener {
+        //TODO вся логика должна быть в ViewModel но пока что так
+        val downloaded = arguments!!.getBoolean(DOWNLOADED_KEY)
+        if (downloaded) {
+            if (quest == null) {
+                //TODO
+                throw IllegalStateException("Opened unknown quest")
+            }
+            setQuestDownloaded(quest)
+        } else {
+            binding.fragmentPreviewLeftButton.text = "Download"
+            binding.fragmentPreviewPlayButton.visibility = View.GONE
+        }
+
+        return binding.root
+    }
+
+    private fun setQuestDownloaded(quest: QuestItem) {
+        binding.fragmentPreviewLeftButton.text = "Delete"
+        binding.fragmentPreviewPlayButton.setOnClickListener {
             findNavController().navigate(
                 R.id.action_questPreviewFragment_to_questContentFragment,
-                bundleOf("quest" to (quest?.title ?: "Quest not found"))
+                bundleOf("quest" to (quest.title))
             )
         }
-        return binding.root
+        binding.fragmentPreviewLeftButton.setOnClickListener {
+            app.findQuestItemRepo.remove(quest.id)
+            setQuestDeleted()
+        }
+    }
+
+    private fun setQuestDeleted() {
+        binding.fragmentPreviewLeftButton.text = "Download"
+        binding.fragmentPreviewPlayButton.visibility = View.GONE
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import dev.rodosteam.questtime.databinding.FragmentContentBinding
 import dev.rodosteam.questtime.screen.common.base.BaseFragment
+import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.QUEST_KEY
 
 class QuestContentFragment : BaseFragment() {
 
@@ -24,7 +25,7 @@ class QuestContentFragment : BaseFragment() {
     ): View {
         viewModel = ViewModelProvider(this)[QuestContentViewModel::class.java]
         _binding = FragmentContentBinding.inflate(inflater, container, false)
-        val id = arguments!!.getInt("quest")
+        val id = arguments!!.getInt(QUEST_KEY)
         val quest = app.findQuestItemRepo.findById(id)
         quest?.let {
             binding.fragmentContentContent.text = it.title

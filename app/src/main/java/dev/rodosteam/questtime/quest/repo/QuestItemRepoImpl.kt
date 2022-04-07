@@ -32,4 +32,8 @@ class QuestItemRepoImpl : QuestItemRepo {
     override fun add(item: QuestItem): Boolean {
         return quests.put(item.id, item) == null
     }
+
+    override fun remove(id: Int): QuestItem? {
+        return quests.remove(id)
+    }
 }
