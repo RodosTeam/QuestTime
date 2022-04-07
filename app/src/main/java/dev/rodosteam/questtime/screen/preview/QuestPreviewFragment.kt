@@ -65,7 +65,7 @@ class QuestPreviewFragment : BaseFragment() {
         binding.fragmentPreviewPlayButton.setOnClickListener {
             findNavController().navigate(
                 R.id.action_questPreviewFragment_to_questContentFragment,
-                bundleOf("quest" to (quest.title))
+                bundleOf(QUEST_KEY to (quest.id))
             )
         }
         binding.fragmentPreviewLeftButton.setOnClickListener {
