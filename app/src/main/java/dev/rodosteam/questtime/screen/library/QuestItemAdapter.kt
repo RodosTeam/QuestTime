@@ -7,13 +7,14 @@ import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.quest.model.QuestItem
 
 class QuestItemAdapter(
     private val quests: List<QuestItem>,
     private val navController: NavController
-    ) :
+) :
     RecyclerView.Adapter<QuestItemAdapter.QuestItemHolder>() {
 
     /**
@@ -24,6 +25,8 @@ class QuestItemAdapter(
         private var titleTv: TextView = view.findViewById(R.id.fragment_library_item__title)
         private var descriptionTv: TextView =
             view.findViewById(R.id.fragment_library_item__description)
+        public var playButton: FloatingActionButton =
+            view.findViewById(R.id.fragment_library_item__playButton)
 
         fun bind(item: QuestItem) {
             titleTv.text = item.title
@@ -39,9 +42,17 @@ class QuestItemAdapter(
 
     override fun onBindViewHolder(holder: QuestItemHolder, position: Int) {
         holder.bind(quests[position])
+        holder.playButton.setOnClickListener {
+            navController.navigate(
+                R.id.action_navigation_library_to_questContentFragment,
+                bundleOf("quest" to quests[position].id)
+            )
+        }
         holder.view.setOnClickListener {
-            navController.navigate(R.id.action_navigation_library_to_questPreviewFragment,
-            bundleOf("quest" to quests[position].id))
+            navController.navigate(
+                R.id.action_navigation_library_to_questPreviewFragment,
+                bundleOf("quest" to quests[position].id)
+            )
         }
     }
 

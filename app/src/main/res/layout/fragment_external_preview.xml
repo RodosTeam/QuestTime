@@ -151,7 +151,7 @@
     </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fragment_library_preview__playButton"
+        android:id="@+id/fragment_preview__playButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="?colorPrimary"
