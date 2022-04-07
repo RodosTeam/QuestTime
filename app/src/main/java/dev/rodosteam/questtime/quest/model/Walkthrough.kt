@@ -20,7 +20,7 @@ class Walkthrough private constructor(
     val page get() = content.pages.getValue(history.last())
 
     /**
-     * Шаг назад.
+     * Шаг назад. TODO: Не дать удалить из history.
      *
      * @return возвращает предыдущее состояние
      */
