@@ -1,5 +1,5 @@
 package dev.rodosteam.questtime.quest.repo
-
+// TODO: Rename to QuestMetaInfo
 import dev.rodosteam.questtime.quest.model.QuestItem
 
 class QuestItemRepoImpl : QuestItemRepo {

@@ -1,0 +1,35 @@
+{
+  "name": "Test quest",
+  "startNodeId": 1,
+  "pages": [
+    {
+      "id": 1,
+      "displayText": "Page 1",
+      "choices": [
+        {
+          "nextPageId": 2,
+          "displayText": "Go to page 2"
+        },
+        {
+          "nextPageId": 3,
+          "displayText": "Go to page 3"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "displayText": "Page 2",
+      "choices": [
+        {
+          "nextPageId": 3,
+          "displayText": "Go to page 3"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "displayText": "Page 3",
+      "choices": []
+    }
+  ]
+}
