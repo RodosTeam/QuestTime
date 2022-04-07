@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/mobile_navigation"
-            app:startDestination="@+id/navigation_library">
+<navigation
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mobile_navigation"
+        app:startDestination="@+id/navigation_library">
 
     <fragment
             android:id="@+id/navigation_library"
@@ -11,11 +12,11 @@
             android:label="@string/title_library"
             tools:layout="@layout/fragment_library">
         <action
-            android:id="@+id/action_navigation_library_to_questPreviewFragment"
-            app:destination="@id/questPreviewFragment" />
+                android:id="@+id/action_navigation_library_to_questPreviewFragment"
+                app:destination="@id/questPreviewFragment"/>
         <action
-            android:id="@+id/action_navigation_library_to_questContentFragment"
-            app:destination="@id/questContentFragment" />
+                android:id="@+id/action_navigation_library_to_questContentFragment"
+                app:destination="@id/questContentFragment"/>
     </fragment>
 
     <fragment
@@ -36,16 +37,16 @@
             android:label="@string/title_settings"
             tools:layout="@layout/fragment_settings"/>
     <fragment
-        android:id="@+id/questPreviewFragment"
-        android:name="dev.rodosteam.questtime.screen.preview.QuestPreviewFragment"
-        android:label="fragment_library_preview"
-        tools:layout="@layout/fragment_library_preview" >
+            android:id="@+id/questPreviewFragment"
+            android:name="dev.rodosteam.questtime.screen.preview.QuestPreviewFragment"
+            android:label="fragment_library_preview"
+            tools:layout="@layout/fragment_library_preview">
         <action
-            android:id="@+id/action_questPreviewFragment_to_questContentFragment"
-            app:destination="@id/questContentFragment" />
+                android:id="@+id/action_questPreviewFragment_to_questContentFragment"
+                app:destination="@id/questContentFragment"/>
     </fragment>
     <fragment
-        android:id="@+id/questContentFragment"
-        android:name="dev.rodosteam.questtime.screen.questContent.QuestContentFragment"
-        android:label="QuestContentFragment" />
+            android:id="@+id/questContentFragment"
+            android:name="dev.rodosteam.questtime.screen.questContent.QuestContentFragment"
+            android:label="QuestContentFragment"/>
 </navigation>
