@@ -1,0 +1,14 @@
+{
+  "questsMeta": [
+    {
+      "id": 1,
+      "title": "Хоббит",
+      "description": "",
+      "author": "Александра Ткаченко",
+      "downloads": 12,
+      "favorites": 35,
+      "created": 1649413091,
+      "filename": "hobbit.json"
+    }
+  ]
+}
