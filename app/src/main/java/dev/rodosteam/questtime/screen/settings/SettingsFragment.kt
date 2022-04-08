@@ -23,7 +23,7 @@ class SettingsFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         settingsViewModel =
             ViewModelProvider(this).get(SettingsViewModel::class.java)
 

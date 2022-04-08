@@ -19,8 +19,6 @@ class LibraryFragment : BaseFragmentWithOptionMenu() {
     lateinit var adapter: QuestItemAdapter
     lateinit var quests: MutableList<QuestMeta>
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -31,7 +29,7 @@ class LibraryFragment : BaseFragmentWithOptionMenu() {
         super.onCreateView(inflater, container, savedInstanceState)
         libraryViewModel = ViewModelProvider(this)[LibraryViewModel::class.java]
         _binding = FragmentLibraryBinding.inflate(inflater, container, false)
-        quests = app.findQuestItemRepo.findAll().toMutableList()
+        quests = app.findQuestMetaRepo.findAll().toMutableList()
         quests.addAll(app.findQuestMetaRepoJson.findAll())
         adapter = QuestItemAdapter(quests, findNavController())
         binding.libraryRecyclerView.adapter = adapter
@@ -49,11 +47,13 @@ class LibraryFragment : BaseFragmentWithOptionMenu() {
             override fun onQueryTextChange(p0: String?): Boolean {
                 if (p0 == "") {
                     quests.clear()
-                    quests.addAll(app.findQuestItemRepo.findAll())
+                    quests.addAll(app.findQuestMetaRepoJson.findAll())
+                    quests.addAll(app.findQuestMetaRepo.findAll())
                     adapter.notifyDataSetChanged()
                 } else {
                     quests.clear()
-                    quests.addAll(app.findQuestItemRepo.findAllByName(p0.toString()))
+                    quests.addAll(app.findQuestMetaRepoJson.findAllByName(p0.toString()))
+                    quests.addAll(app.findQuestMetaRepo.findAllByName(p0.toString()))
                     adapter.notifyDataSetChanged()
                 }
                 return true

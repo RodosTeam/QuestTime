@@ -34,7 +34,7 @@ class QuestPreviewFragment : BaseFragment() {
             return binding.root
         }
         val id = arguments!!.getInt(QUEST_KEY)
-        var quest = app.findQuestItemRepo.findById(id)
+        var quest = app.findQuestMetaRepo.findById(id)
         if (quest == null) {
             quest = app.findQuestMetaRepoJson.findById(id)
         }
@@ -73,7 +73,7 @@ class QuestPreviewFragment : BaseFragment() {
             )
         }
         binding.fragmentPreviewLeftButton.setOnClickListener {
-            app.findQuestItemRepo.remove(quest.id)
+            app.findQuestMetaRepo.remove(quest.id)
             setQuestDeleted(quest)
         }
     }
@@ -88,7 +88,7 @@ class QuestPreviewFragment : BaseFragment() {
     }
 
     private fun downloadQuest(quest: QuestMeta) {
-        app.findQuestItemRepo.add(quest)
+        app.findQuestMetaRepo.add(quest)
         setQuestDownloaded(quest)
     }
 

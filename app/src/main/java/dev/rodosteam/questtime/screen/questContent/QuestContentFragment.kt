@@ -32,7 +32,7 @@ class QuestContentFragment : BaseFragment() {
         viewModel = ViewModelProvider(this)[QuestContentViewModel::class.java]
         _binding = FragmentContentBinding.inflate(inflater, container, false)
         val id = arguments!!.getInt(QUEST_KEY)
-        var quest = app.findQuestItemRepo.findById(id)
+        var quest = app.findQuestMetaRepo.findById(id)
         if (quest == null) {
             quest = app.findQuestMetaRepoJson.findById(id)
         }

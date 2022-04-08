@@ -20,10 +20,6 @@ class QuestItemAdapter(
 ) :
     RecyclerView.Adapter<QuestItemAdapter.QuestItemHolder>() {
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
     class QuestItemHolder(val view: View) : RecyclerView.ViewHolder(view) {
         private var titleTv: TextView = view.findViewById(R.id.fragment_library_item__title)
         private var descriptionTv: TextView = view.findViewById(R.id.fragment_library_item__description)

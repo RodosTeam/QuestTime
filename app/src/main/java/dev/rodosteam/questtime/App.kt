@@ -7,7 +7,7 @@ import dev.rodosteam.questtime.quest.repo.meta.QuestMetaRepoMock
 
 class App : Application() {
 
-    val findQuestItemRepo by lazy {
+    val findQuestMetaRepo by lazy {
         QuestMetaRepoMock()
     }
 
