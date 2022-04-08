@@ -16,7 +16,6 @@
             android:id="@+id/fragment_library_item__image"
             android:layout_width="104dp"
             android:layout_height="104dp"
-            android:background="?colorPrimary"
             android:contentDescription="@string/image_description"
             android:padding="1dp"
             android:scaleType="fitXY"

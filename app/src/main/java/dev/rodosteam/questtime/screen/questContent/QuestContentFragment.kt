@@ -31,6 +31,7 @@ class QuestContentFragment : BaseFragment() {
             // TODO do good
             mainActivity.supportActionBar?.title = it.title
             binding.fragmentContentContent.text = it.title
+            binding.fragmentContentImage.setImageResource(it.iconId)
         }
         return binding.root
     }
