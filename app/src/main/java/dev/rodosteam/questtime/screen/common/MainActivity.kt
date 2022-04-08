@@ -1,10 +1,8 @@
 package dev.rodosteam.questtime.screen.common
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.Menu
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -36,20 +34,18 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.navigation_library,
+                R.id.navigation_external,
+                R.id.navigation_editor,
+                R.id.navigation_settings -> navView.visibility = View.VISIBLE
+                else -> {
+                    navView.visibility = View.GONE
+                }
+            }
+        }
+
     }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_search_menu, menu)
-        val menuItem = menu?.findItem(R.id.search_bar)
-        val searchView = menuItem?.actionView as SearchView
-        searchView.queryHint = this.getString(R.string.search_text)
-
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        super.onSaveInstanceState(outState, outPersistentState)
-    }
-
 }
 

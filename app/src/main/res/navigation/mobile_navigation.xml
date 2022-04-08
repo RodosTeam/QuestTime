@@ -13,10 +13,10 @@
             tools:layout="@layout/fragment_library">
         <action
                 android:id="@+id/action_navigation_library_to_questPreviewFragment"
-                app:destination="@id/questPreviewFragment"/>
+                app:destination="@id/navigation_quest_preview"/>
         <action
                 android:id="@+id/action_navigation_library_to_questContentFragment"
-                app:destination="@id/questContentFragment"/>
+                app:destination="@id/navigation_quest_content"/>
     </fragment>
 
     <fragment
@@ -37,16 +37,15 @@
             android:label="@string/title_settings"
             tools:layout="@layout/fragment_settings"/>
     <fragment
-            android:id="@+id/questPreviewFragment"
+            android:id="@+id/navigation_quest_preview"
             android:name="dev.rodosteam.questtime.screen.preview.QuestPreviewFragment"
-            android:label="fragment_library_preview"
-            tools:layout="@layout/fragment_library_preview">
+            tools:layout="@layout/fragment_library_preview" android:label="">
         <action
                 android:id="@+id/action_questPreviewFragment_to_questContentFragment"
-                app:destination="@id/questContentFragment"/>
+                app:destination="@id/navigation_quest_content"/>
     </fragment>
     <fragment
-            android:id="@+id/questContentFragment"
+            android:id="@+id/navigation_quest_content"
             android:name="dev.rodosteam.questtime.screen.questContent.QuestContentFragment"
-            android:label="QuestContentFragment"/>
+            android:label=""/>
 </navigation>

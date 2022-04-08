@@ -2,9 +2,7 @@ package dev.rodosteam.questtime.screen.preview
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import dev.rodosteam.questtime.R
@@ -38,10 +36,13 @@ class QuestPreviewFragment : BaseFragment() {
         val id = arguments!!.getInt(QUEST_KEY)
         val quest = app.findQuestItemRepo.findById(id)
         quest?.let {
+            // TODO do good
+            mainActivity.supportActionBar?.title = it.title
+            binding.fragmentPreviewImage.setImageResource(it.iconId)
             binding.fragmentPreviewTitle.text = it.title
             binding.fragmentPreviewDescription.text = it.description
             binding.fragmentPreviewAuthor.text = it.author
-            binding.fragmentPreviewInfo.text = "${it.downloads} установок"
+            binding.fragmentPreviewInfo.text = getString(R.string.downloads_info, it.downloads)
         }
         //TODO вся логика должна быть в ViewModel но пока что так
         val downloaded = arguments!!.getBoolean(DOWNLOADED_KEY)
@@ -52,7 +53,7 @@ class QuestPreviewFragment : BaseFragment() {
             }
             setQuestDownloaded(quest)
         } else {
-            binding.fragmentPreviewLeftButton.text = "Download"
+            binding.fragmentPreviewLeftButton.text = getString(R.string.download_button)
             binding.fragmentPreviewPlayButton.visibility = View.GONE
         }
 
@@ -60,12 +61,12 @@ class QuestPreviewFragment : BaseFragment() {
     }
 
     private fun setQuestDownloaded(quest: QuestMeta) {
-        binding.fragmentPreviewLeftButton.text = "Delete"
+        binding.fragmentPreviewLeftButton.text = getString(R.string.delete_button)
         binding.fragmentPreviewPlayButton.visibility = View.VISIBLE
         binding.fragmentPreviewPlayButton.setOnClickListener {
             findNavController().navigate(
                 R.id.action_questPreviewFragment_to_questContentFragment,
-                bundleOf("quest" to (quest.title))
+                bundleOf(QUEST_KEY to (quest.id))
             )
         }
         binding.fragmentPreviewLeftButton.setOnClickListener {
@@ -75,7 +76,7 @@ class QuestPreviewFragment : BaseFragment() {
     }
 
     private fun setQuestDeleted(quest: QuestMeta) {
-        binding.fragmentPreviewLeftButton.text = "Download"
+        binding.fragmentPreviewLeftButton.text = getString(R.string.download_button)
         binding.fragmentPreviewPlayButton.visibility = View.GONE
         binding.fragmentPreviewLeftButton
         binding.fragmentPreviewLeftButton.setOnClickListener {
