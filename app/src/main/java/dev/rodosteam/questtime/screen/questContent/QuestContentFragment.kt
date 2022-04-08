@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import dev.rodosteam.questtime.databinding.FragmentContentBinding
 import dev.rodosteam.questtime.quest.model.Walkthrough
 import dev.rodosteam.questtime.screen.common.base.BaseFragment
@@ -21,6 +22,7 @@ class QuestContentFragment : BaseFragment() {
     private var _binding: FragmentContentBinding? = null
     private val binding get() = _binding!!
     private lateinit var buttons : List<Button> // TODO optimize
+    private lateinit var textView: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +32,8 @@ class QuestContentFragment : BaseFragment() {
         _binding = FragmentContentBinding.inflate(inflater, container, false)
         val id = arguments!!.getInt(QUEST_KEY)
         val quest = app.findQuestItemRepo.findById(id)
+
+        textView = binding.fragmentContentText
 
         buttons = listOf(
             binding.fragmentContentButton1,
@@ -53,6 +57,9 @@ class QuestContentFragment : BaseFragment() {
 
     private fun sync(walk: Walkthrough) {
         val choices = walk.page.choices.size
+
+        textView.text=walk.page.displayText
+
         for(i in 0..3) {
             if( i < choices) {
                 activateButton(i, walk)
@@ -66,8 +73,7 @@ class QuestContentFragment : BaseFragment() {
         val button = buttons[order]
         button.text = walk.page.choices[order].displayText //ну надо чет написать
         button.setOnClickListener{ // чет сделать
-            walk.choose(order)
-            sync(walk)
+            sync(walk.choose(order))
         }
         button.visibility = View.VISIBLE
     }
