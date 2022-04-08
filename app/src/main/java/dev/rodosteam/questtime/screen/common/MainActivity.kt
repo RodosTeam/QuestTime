@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener{_, destination, _ ->
             when (destination.id) {
                 R.id.navigation_library,
+                R.id.navigation_external
                 R.id.navigation_editor,
                 R.id.navigation_settings -> navView.visibility = View.VISIBLE
                 else -> {
