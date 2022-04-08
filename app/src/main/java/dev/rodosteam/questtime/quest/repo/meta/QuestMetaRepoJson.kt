@@ -16,6 +16,7 @@ class QuestMetaRepoJson : QuestMetaRepoBase() {
         const val DOWNLOADS = "downloads"
         const val FAVORITES = "favorites"
         const val CREATED = "created"
+        const val IMAGE_RES_ID = "imageId"
         const val FILENAME = "filename"
 
         fun load(filePath: String): QuestMetaRepoJson {
@@ -39,6 +40,7 @@ class QuestMetaRepoJson : QuestMetaRepoBase() {
                 val curJsonMeta = jsonMetas.getJSONObject(i)
 
                 //TODO: Can be refactored
+                //TODO: FIX (ADD) JSON IMAGE RES ID
                 val id = curJsonMeta.getInt(ID)
                 metas[id] = QuestMeta(
                     id,
@@ -48,6 +50,7 @@ class QuestMetaRepoJson : QuestMetaRepoBase() {
                     curJsonMeta.getInt(DOWNLOADS),
                     curJsonMeta.getInt(FAVORITES),
                     curJsonMeta.getLong(CREATED),
+                    curJsonMeta.getInt(IMAGE_RES_ID),
                     curJsonMeta.getString(FILENAME)
                 )
             }

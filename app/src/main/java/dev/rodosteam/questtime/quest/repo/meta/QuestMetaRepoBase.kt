@@ -22,11 +22,16 @@ open class QuestMetaRepoBase : QuestMetaRepo {
         return null
     }
 
+    override fun findAllByName(name: String): List<QuestMeta> {
+        name.lowercase()
+        return quests.values.filter { it.title.lowercase().contains(name) }
+    }
+
     override fun add(item: QuestMeta): Boolean {
         return quests.put(item.id, item) == null
     }
 
-    override fun addAll(metas: Map<Int, QuestMeta>) {
+    fun addAll(metas: Map<Int, QuestMeta>) {
         quests.putAll(metas)
     }
 

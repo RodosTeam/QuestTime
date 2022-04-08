@@ -8,7 +8,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.FragmentLibraryBinding
-import dev.rodosteam.questtime.quest.model.QuestItem
+import dev.rodosteam.questtime.quest.model.QuestMeta
 import dev.rodosteam.questtime.screen.common.base.BaseFragmentWithOptionMenu
 
 class LibraryFragment : BaseFragmentWithOptionMenu() {
@@ -17,7 +17,7 @@ class LibraryFragment : BaseFragmentWithOptionMenu() {
 
     private var _binding: FragmentLibraryBinding? = null
     lateinit var adapter: QuestItemAdapter
-    lateinit var quests: MutableList<QuestItem>
+    lateinit var quests: MutableList<QuestMeta>
 
     // This property is only valid between onCreateView and
     // onDestroyView.

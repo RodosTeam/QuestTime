@@ -1,9 +1,9 @@
-package dev.rodosteam.questtime.quest.repo
+package dev.rodosteam.questtime.quest.repo.meta
 
 import dev.rodosteam.questtime.R
-import dev.rodosteam.questtime.quest.model.QuestItem
+import dev.rodosteam.questtime.quest.model.QuestMeta
 
-class QuestsInfo {
+class QuestsMockInfo {
     private val minInt = 0
     private val maxInt = 500
 
@@ -64,8 +64,8 @@ class QuestsInfo {
         R.drawable.shrek_icon
     )
 
-    fun generateRandomQuest(id: Int): QuestItem {
-        return QuestItem(
+    fun generateRandomQuest(id: Int): QuestMeta {
+        return QuestMeta(
             id,
             questsTitles.random(),
             questsDescription.random(),
