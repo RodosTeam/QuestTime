@@ -11,13 +11,14 @@ class QuestContentRepoJsonTest {
         const val QUEST_CONTENT_REPO_LOCATION = "quest_library/quests/"
         const val QUEST_FILENAME = "test_quest.json"
         const val TEST_ID = -1
+        const val INVALID_IMAGE_RES_ID = -1
         val FIRST = QuestContent.Page.Id(1)
     }
 
     @Test
     fun reading_isCorrect() {
         val meta = QuestMetaRepoBase()
-        meta.add(QuestMeta(TEST_ID, "", "", "", 0, 0, 0, QUEST_FILENAME))
+        meta.add(QuestMeta(TEST_ID, "", "", "", 0, 0, 0, INVALID_IMAGE_RES_ID, QUEST_FILENAME))
         val questContentRepo = QuestContentRepoJson(meta, QUEST_CONTENT_REPO_LOCATION)
         val quest = questContentRepo.findById(TEST_ID)
         Assert.assertNotNull(quest)

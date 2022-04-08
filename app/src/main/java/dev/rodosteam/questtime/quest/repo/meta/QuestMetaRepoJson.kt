@@ -40,7 +40,6 @@ class QuestMetaRepoJson : QuestMetaRepoBase() {
                 val curJsonMeta = jsonMetas.getJSONObject(i)
 
                 //TODO: Can be refactored
-                //TODO: FIX (ADD) JSON IMAGE RES ID
                 val id = curJsonMeta.getInt(ID)
                 metas[id] = QuestMeta(
                     id,
