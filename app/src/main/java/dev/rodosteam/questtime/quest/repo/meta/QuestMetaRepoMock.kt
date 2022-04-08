@@ -4,7 +4,7 @@ class QuestMetaRepoMock : QuestMetaRepoBase() {
     init {
         val questsInfo = QuestsMockInfo()
         repeat(10) {
-            quests[it] = questsInfo.generateRandomQuest(it)
+            quests[it + 2] = questsInfo.generateRandomQuest(it + 2)
         }
     }
 }

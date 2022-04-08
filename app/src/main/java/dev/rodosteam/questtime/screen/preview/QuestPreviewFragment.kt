@@ -34,7 +34,10 @@ class QuestPreviewFragment : BaseFragment() {
             return binding.root
         }
         val id = arguments!!.getInt(QUEST_KEY)
-        val quest = app.findQuestItemRepo.findById(id)
+        var quest = app.findQuestItemRepo.findById(id)
+        if (quest == null) {
+            quest = app.findQuestMetaRepoJson.findById(id)
+        }
         quest?.let {
             // TODO do good
             mainActivity.supportActionBar?.title = it.title

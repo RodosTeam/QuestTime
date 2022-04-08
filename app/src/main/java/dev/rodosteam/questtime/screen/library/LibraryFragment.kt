@@ -32,6 +32,7 @@ class LibraryFragment : BaseFragmentWithOptionMenu() {
         libraryViewModel = ViewModelProvider(this)[LibraryViewModel::class.java]
         _binding = FragmentLibraryBinding.inflate(inflater, container, false)
         quests = app.findQuestItemRepo.findAll().toMutableList()
+        quests.addAll(app.findQuestMetaRepoJson.findAll())
         adapter = QuestItemAdapter(quests, findNavController())
         binding.libraryRecyclerView.adapter = adapter
         binding.libraryRecyclerView.layoutManager = LinearLayoutManager(this.context)
