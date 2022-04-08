@@ -29,8 +29,7 @@ class LibraryFragment : BaseFragmentWithOptionMenu() {
         super.onCreateView(inflater, container, savedInstanceState)
         libraryViewModel = ViewModelProvider(this)[LibraryViewModel::class.java]
         _binding = FragmentLibraryBinding.inflate(inflater, container, false)
-        quests = app.findQuestMetaRepo.findAll().toMutableList()
-        quests.addAll(app.findQuestMetaRepoJson.findAll())
+        quests = app.questMetaRepo.findAll().toMutableList()
         adapter = QuestItemAdapter(quests, findNavController())
         binding.libraryRecyclerView.adapter = adapter
         binding.libraryRecyclerView.layoutManager = LinearLayoutManager(this.context)
@@ -47,13 +46,11 @@ class LibraryFragment : BaseFragmentWithOptionMenu() {
             override fun onQueryTextChange(p0: String?): Boolean {
                 if (p0 == "") {
                     quests.clear()
-                    quests.addAll(app.findQuestMetaRepoJson.findAll())
-                    quests.addAll(app.findQuestMetaRepo.findAll())
+                    quests.addAll(app.questMetaRepo.findAll())
                     adapter.notifyDataSetChanged()
                 } else {
                     quests.clear()
-                    quests.addAll(app.findQuestMetaRepoJson.findAllByName(p0.toString()))
-                    quests.addAll(app.findQuestMetaRepo.findAllByName(p0.toString()))
+                    quests.addAll(app.questMetaRepo.findAllByName(p0.toString()))
                     adapter.notifyDataSetChanged()
                 }
                 return true

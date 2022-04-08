@@ -31,11 +31,8 @@ class QuestContentFragment : BaseFragment() {
     ): View {
         viewModel = ViewModelProvider(this)[QuestContentViewModel::class.java]
         _binding = FragmentContentBinding.inflate(inflater, container, false)
-        val id = arguments!!.getInt(QUEST_KEY)
-        var quest = app.findQuestMetaRepo.findById(id)
-        if (quest == null) {
-            quest = app.findQuestMetaRepoJson.findById(id)
-        }
+        val id = requireArguments().getInt(QUEST_KEY)
+        val quest = app.questMetaRepo.findById(id)
 
         textView = binding.fragmentContentText
 
@@ -52,7 +49,7 @@ class QuestContentFragment : BaseFragment() {
             mainActivity.supportActionBar?.title = it.title
             binding.fragmentContentContent.text = it.title
             binding.fragmentContentImage.setImageResource(it.iconId)
-            content = app.findQuestContentRepoJson.findById(it.id)
+            content = app.questContentRepo.findById(it.id)
         }
 
         if (content != null) {

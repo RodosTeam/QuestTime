@@ -33,11 +33,8 @@ class QuestPreviewFragment : BaseFragment() {
         if (arguments == null) {
             return binding.root
         }
-        val id = arguments!!.getInt(QUEST_KEY)
-        var quest = app.findQuestMetaRepo.findById(id)
-        if (quest == null) {
-            quest = app.findQuestMetaRepoJson.findById(id)
-        }
+        val id = requireArguments().getInt(QUEST_KEY)
+        val quest = app.questMetaRepo.findById(id)
         quest?.let {
             // TODO do good
             mainActivity.supportActionBar?.title = it.title
@@ -48,7 +45,7 @@ class QuestPreviewFragment : BaseFragment() {
             binding.fragmentPreviewInfo.text = getString(R.string.downloads_info, it.downloads)
         }
         //TODO вся логика должна быть в ViewModel но пока что так
-        val downloaded = arguments!!.getBoolean(DOWNLOADED_KEY)
+        val downloaded = requireArguments().getBoolean(DOWNLOADED_KEY)
         if (downloaded) {
             if (quest == null) {
                 findNavController().navigateUp()
@@ -73,7 +70,7 @@ class QuestPreviewFragment : BaseFragment() {
             )
         }
         binding.fragmentPreviewLeftButton.setOnClickListener {
-            app.findQuestMetaRepo.remove(quest.id)
+            app.questMetaRepo.remove(quest.id)
             setQuestDeleted(quest)
         }
     }
@@ -88,7 +85,7 @@ class QuestPreviewFragment : BaseFragment() {
     }
 
     private fun downloadQuest(quest: QuestMeta) {
-        app.findQuestMetaRepo.add(quest)
+        app.questMetaRepo.add(quest)
         setQuestDownloaded(quest)
     }
 
