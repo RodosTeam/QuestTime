@@ -1,5 +1,6 @@
 package dev.rodosteam.questtime.quest.repo.meta
 
+import dev.rodosteam.questtime.App
 import org.junit.Assert
 import org.junit.Test
 
@@ -19,7 +20,7 @@ class QuestMetaRepoJsonTest {
 
     @Test
     fun reading_isCorrect() {
-        val questRepo = QuestMetaRepoJson.load(QUEST_META_PATH)
+        val questRepo = QuestMetaRepoJson(TODO("access resources from tests"))
         val meta = questRepo.findById(TEST_QUEST_ID)
         Assert.assertNotNull(meta)
         Assert.assertEquals(TEST_QUEST_TITLE, meta?.title)

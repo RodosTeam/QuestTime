@@ -1,14 +1,15 @@
 package dev.rodosteam.questtime.quest.repo.content
 
+import android.content.res.Resources
+import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.quest.model.QuestContent
 import dev.rodosteam.questtime.quest.repo.meta.QuestMetaRepo
 import org.json.JSONArray
 import org.json.JSONObject
 import org.json.JSONTokener
-import java.io.File
 
 class QuestContentRepoJson constructor(
-    val questsMeta: QuestMetaRepo, val locationPath: String
+    private val resources: Resources
 ) : QuestContentRepo {
     companion object {
         const val NAME = "name"
@@ -18,41 +19,31 @@ class QuestContentRepoJson constructor(
         const val ID = "id"
         const val NEXT_PAGE_ID = "nextPageId"
         const val DISPLAY_TEXT = "displayText"
+        private val CONTENT_MAP = mapOf(-1 to R.raw.test_quest, 1 to R.raw.hobbit)
     }
 
     override fun findById(id: Int): QuestContent? {
-        val questMeta = questsMeta.findById(id)
-        if (questMeta != null) {
-            return readQuestContent(questMeta.filename)
+        if (!CONTENT_MAP.containsKey(id)) {
+            return null
         }
-
-        return null
+        resources.openRawResource(CONTENT_MAP.getValue(id)).bufferedReader().use {
+            val jsonObject = JSONTokener(it.readText()).nextValue() as JSONObject
+            val jsonPages = jsonObject.getJSONArray(PAGES)
+            return QuestContent(
+                readPages(jsonPages),
+                QuestContent.Page.Id(jsonObject.getLong(START_NODE_ID))
+            )
+        }
     }
 
     override fun findByName(name: String): QuestContent? {
-        return questsMeta.findByName(name)?.let { findById(it.id) }
-    }
-
-    private fun readQuestContent(filename: String): QuestContent? {
-        val questFile = File(locationPath + filename)
-        if (!questFile.canRead()) {
-            throw NoSuchFileException(questFile)
-        }
-
-        val jsonObj = JSONTokener(questFile.readText(Charsets.UTF_8)).nextValue() as JSONObject
-        val jsonPages = jsonObj.getJSONArray(PAGES)
-
-        return QuestContent(
-            readPages(jsonPages),
-            QuestContent.Page.Id(jsonObj.getLong(START_NODE_ID))
-        )
+        throw UnsupportedOperationException()
     }
 
     private fun readPages(jsonPages: JSONArray): Iterable<QuestContent.Page> {
         val pages = arrayListOf<QuestContent.Page>()
         for (i in 0 until jsonPages.length()) {
             val curJsonPage = jsonPages.getJSONObject(i)
-
             pages.add(
                 QuestContent.Page(
                     QuestContent.Page.Id(curJsonPage.getLong(ID)),
@@ -61,7 +52,6 @@ class QuestContentRepoJson constructor(
                 )
             )
         }
-
         return pages
     }
 
@@ -69,7 +59,6 @@ class QuestContentRepoJson constructor(
         val choices = arrayListOf<QuestContent.Page.Choice>()
         for (i in 0 until jsonChoices.length()) {
             val curJsonChoice = jsonChoices.getJSONObject(i)
-
             choices.add(
                 QuestContent.Page.Choice(
                     QuestContent.Page.Id(curJsonChoice.getLong(NEXT_PAGE_ID)),
@@ -77,7 +66,6 @@ class QuestContentRepoJson constructor(
                 )
             )
         }
-
         return choices
     }
 }

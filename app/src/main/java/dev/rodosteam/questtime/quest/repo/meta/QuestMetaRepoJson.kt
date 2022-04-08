@@ -1,13 +1,13 @@
 package dev.rodosteam.questtime.quest.repo.meta
 
+import android.content.res.Resources
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.quest.model.QuestMeta
 import org.json.JSONArray
 import org.json.JSONObject
 import org.json.JSONTokener
-import java.io.File
 
-class QuestMetaRepoJson : QuestMetaRepoBase() {
+class QuestMetaRepoJson(resources: Resources) : QuestMetaRepoBase() {
     companion object {
         const val QUESTS_META_ARRAY = "questsMeta"
         const val ID = "id"
@@ -19,21 +19,6 @@ class QuestMetaRepoJson : QuestMetaRepoBase() {
         const val CREATED = "created"
         const val FILENAME = "filename"
         private val IMAGES_MAP = mapOf(-1 to R.drawable.test_icon, 1 to R.drawable.hobbit_lego_icon)
-
-        fun load(filePath: String): QuestMetaRepoJson {
-            val questMetaFile = File(filePath)
-            if (!questMetaFile.canRead()) {
-                throw NoSuchFileException(questMetaFile)
-            }
-
-            val jsonObj =
-                JSONTokener(questMetaFile.readText(Charsets.UTF_8)).nextValue() as JSONObject
-            val jsonMetas = jsonObj.getJSONArray(QUESTS_META_ARRAY)
-
-            val questMetaRepo = QuestMetaRepoJson()
-            questMetaRepo.addAll(readMetas(jsonMetas))
-            return questMetaRepo
-        }
 
         private fun readMetas(jsonMetas: JSONArray): Map<Int, QuestMeta> {
             val metas = mutableMapOf<Int, QuestMeta>()
@@ -56,6 +41,14 @@ class QuestMetaRepoJson : QuestMetaRepoBase() {
             }
 
             return metas
+        }
+    }
+
+    init {
+        resources.openRawResource(R.raw.quest_information).bufferedReader().use {
+            val jsonObject = JSONTokener(it.readText()).nextValue() as JSONObject
+            val jsonMetas = jsonObject.getJSONArray(QUESTS_META_ARRAY)
+            addAll(readMetas(jsonMetas))
         }
     }
 }
