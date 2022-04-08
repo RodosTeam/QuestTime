@@ -3,8 +3,8 @@ package dev.rodosteam.questtime.screen.common
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.Menu
-import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -28,7 +28,10 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_library, R.id.navigation_external, R.id.navigation_editor, R.id.navigation_settings
+                R.id.navigation_library,
+                R.id.navigation_external,
+                R.id.navigation_editor,
+                R.id.navigation_settings
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

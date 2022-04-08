@@ -1,6 +1,6 @@
 package dev.rodosteam.questtime.quest.model
 
-data class QuestItem(
+data class QuestMeta(
     val id: Int,
     val title: String,
     val description: String,

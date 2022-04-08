@@ -1,6 +1,6 @@
-package dev.rodosteam.questtime.quest.repo
+package dev.rodosteam.questtime.quest.repo.meta
 
-import dev.rodosteam.questtime.quest.model.QuestItem
+import dev.rodosteam.questtime.quest.model.QuestMeta
 
 class QuestsInfo {
     private val minInt = 0
@@ -55,8 +55,8 @@ class QuestsInfo {
                 " Люди, которые чего-то не могут, будут уверять, что и у тебя тоже не выйдет. Поставил цель — добейся! И точка."
     )
 
-    fun generateRandomQuest(id: Int): QuestItem {
-        return QuestItem(
+    fun generateRandomQuest(id: Int): QuestMeta {
+        return QuestMeta(
             id,
             questsTitles.random(),
             questsDescription.random(),

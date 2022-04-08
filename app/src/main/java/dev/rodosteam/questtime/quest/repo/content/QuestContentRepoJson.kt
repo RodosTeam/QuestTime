@@ -1,13 +1,14 @@
-package dev.rodosteam.questtime.quest.repo
+package dev.rodosteam.questtime.quest.repo.content
 
 import dev.rodosteam.questtime.quest.model.QuestContent
+import dev.rodosteam.questtime.quest.repo.meta.QuestMetaRepo
 import org.json.JSONArray
 import org.json.JSONObject
 import org.json.JSONTokener
 import java.io.File
 
 class QuestContentRepoJson constructor(
-    val questsMeta: QuestItemRepo, val locationPath: String
+    val questsMeta: QuestMetaRepo, val locationPath: String
 ) : QuestContentRepo {
     companion object {
         const val NAME = "name"
