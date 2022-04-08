@@ -20,14 +20,11 @@ class QuestMetaRepoJson(resources: Resources) : QuestMetaRepoBase() {
         const val FILENAME = "filename"
         private val IMAGES_MAP = mapOf(-1 to R.drawable.test_icon, 1 to R.drawable.hobbit_lego_icon)
 
-        private fun readMetas(jsonMetas: JSONArray): Map<Int, QuestMeta> {
-            val metas = mutableMapOf<Int, QuestMeta>()
-            for (i in 0 until jsonMetas.length()) {
-                val curJsonMeta = jsonMetas.getJSONObject(i)
-
-                //TODO: Can be refactored
+        private fun readMetas(jsonMetas: JSONArray): Iterable<QuestMeta> =
+            (0 until jsonMetas.length()).asIterable().map {
+                val curJsonMeta = jsonMetas.getJSONObject(it)
                 val id = curJsonMeta.getInt(ID)
-                metas[id] = QuestMeta(
+                QuestMeta(
                     id,
                     curJsonMeta.getString(TITLE),
                     curJsonMeta.getString(DESCRIPTION),
@@ -39,9 +36,6 @@ class QuestMetaRepoJson(resources: Resources) : QuestMetaRepoBase() {
                     curJsonMeta.getString(FILENAME)
                 )
             }
-
-            return metas
-        }
     }
 
     init {

@@ -31,8 +31,8 @@ open class QuestMetaRepoBase : QuestMetaRepo {
         return quests.put(item.id, item) == null
     }
 
-    fun addAll(metas: Map<Int, QuestMeta>) {
-        quests.putAll(metas)
+    override fun addAll(elements: Iterable<QuestMeta>) {
+        quests.putAll(elements.associateBy { it.id })
     }
 
     override fun remove(id: Int): QuestMeta? {
