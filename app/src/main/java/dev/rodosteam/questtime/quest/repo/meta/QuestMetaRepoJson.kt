@@ -1,5 +1,6 @@
 package dev.rodosteam.questtime.quest.repo.meta
 
+import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.quest.model.QuestMeta
 import org.json.JSONArray
 import org.json.JSONObject
@@ -16,8 +17,8 @@ class QuestMetaRepoJson : QuestMetaRepoBase() {
         const val DOWNLOADS = "downloads"
         const val FAVORITES = "favorites"
         const val CREATED = "created"
-        const val IMAGE_RES_ID = "imageId"
         const val FILENAME = "filename"
+        private val IMAGES_MAP = mapOf(-1 to R.drawable.test_icon, 1 to R.drawable.hobbit_lego_icon)
 
         fun load(filePath: String): QuestMetaRepoJson {
             val questMetaFile = File(filePath)
@@ -49,7 +50,7 @@ class QuestMetaRepoJson : QuestMetaRepoBase() {
                     curJsonMeta.getInt(DOWNLOADS),
                     curJsonMeta.getInt(FAVORITES),
                     curJsonMeta.getLong(CREATED),
-                    curJsonMeta.getInt(IMAGE_RES_ID),
+                    IMAGES_MAP.getValue(id),
                     curJsonMeta.getString(FILENAME)
                 )
             }
