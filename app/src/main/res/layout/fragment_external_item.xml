@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:maxLines="4"
+                android:maxLines="3"
                 android:text="@string/lorem_ipsum"
                 android:textAlignment="viewStart"
                 android:textSize="12sp"/>
@@ -64,7 +64,7 @@
             android:layout_gravity="center"
             android:backgroundTint="?colorPrimary"
             android:contentDescription="@string/play"
-            android:src="@drawable/ic_download_white_24dp"
+            android:src="@drawable/ic_download_black_24dp"
             app:borderWidth="0dp"
             app:useCompatPadding="true"/>
 

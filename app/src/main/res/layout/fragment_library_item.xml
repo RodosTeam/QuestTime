@@ -9,7 +9,7 @@
         android:background="?android:attr/selectableItemBackground"
 >
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/fragment_library_item__image"
             android:layout_width="104dp"
             android:layout_height="104dp"
@@ -42,7 +42,7 @@
             app:layout_constraintTop_toTopOf="parent"
     >
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/fragment_library_item__title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                 android:gravity="start|top"
                 android:text="@string/default_title"
                 android:textAlignment="viewStart"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:maxLines="1"
                 android:ellipsize="end"
@@ -60,7 +60,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/fragment_library_item__description"/>
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/fragment_library_item__description"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -68,8 +68,8 @@
                 android:gravity="start|top"
                 android:text="@string/lorem_ipsum"
                 android:textAlignment="viewStart"
-                android:textSize="12dp"
-                android:maxLines="5"
+                android:textSize="12sp"
+                android:maxLines="4"
                 android:ellipsize="end"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="?colorPrimary"
             android:contentDescription="@string/play"
-            android:src="@drawable/ic_play_white_24dp"
+            android:src="@drawable/ic_play_black_24dp"
             app:borderWidth="0dp"
             app:useCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"

@@ -35,7 +35,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/fragment_preview__image"
                         android:layout_width="156dp"
                         android:layout_height="156dp"
@@ -56,7 +56,7 @@
                         android:paddingRight="16dp"
                         android:paddingBottom="8dp">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/fragment_preview__title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
                             android:textSize="28sp"
                             android:textStyle="bold"/>
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/fragment_preview__author"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
                             android:textAlignment="viewStart"
                             android:textSize="20sp"/>
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/fragment_preview__info"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/fragment_preview__main">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/fragment_preview__left_button"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
                         android:layout_weight="1"
                         android:text="@string/delete_button"/>
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/fragment_preview__right_button"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -131,7 +131,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_preview__actions"/>
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/fragment_preview__description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -158,8 +158,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="?colorPrimary"
             android:contentDescription="@string/play_button"
-            android:src="@drawable/ic_play_white_24dp"
-            app:backgroundTint="?colorPrimaryVariant"
+            android:src="@drawable/ic_play_black_24dp"
             app:borderWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
