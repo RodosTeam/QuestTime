@@ -156,7 +156,6 @@
             android:id="@+id/fragment_preview__playButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="40dp"
             android:backgroundTint="?colorPrimary"
             android:contentDescription="@string/play_button"
             android:src="@drawable/ic_play_white_24dp"

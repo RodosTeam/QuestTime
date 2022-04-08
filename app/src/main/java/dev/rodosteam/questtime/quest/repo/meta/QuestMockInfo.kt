@@ -1,6 +1,7 @@
-package dev.rodosteam.questtime.quest.repo.meta
+package dev.rodosteam.questtime.quest.repo
 
-import dev.rodosteam.questtime.quest.model.QuestMeta
+import dev.rodosteam.questtime.R
+import dev.rodosteam.questtime.quest.model.QuestItem
 
 class QuestsInfo {
     private val minInt = 0
@@ -55,8 +56,16 @@ class QuestsInfo {
                 " Люди, которые чего-то не могут, будут уверять, что и у тебя тоже не выйдет. Поставил цель — добейся! И точка."
     )
 
-    fun generateRandomQuest(id: Int): QuestMeta {
-        return QuestMeta(
+    private val iconId = arrayListOf(
+        R.drawable.scooby_doo_icon,
+        R.drawable.heroes_icon,
+        R.drawable.alice_icon,
+        R.drawable.lord_of_ring_icon,
+        R.drawable.shrek_icon
+    )
+
+    fun generateRandomQuest(id: Int): QuestItem {
+        return QuestItem(
             id,
             questsTitles.random(),
             questsDescription.random(),
@@ -64,6 +73,7 @@ class QuestsInfo {
             (minInt..maxInt).random(),
             (minInt..maxInt).random(),
             1L,
+            iconId.random(),
             //TODO: filename
             ""
         )
