@@ -1,8 +1,7 @@
 package dev.rodosteam.questtime.screen.common
 
 import android.os.Bundle
-import android.os.PersistableBundle
-
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -15,6 +14,7 @@ import dev.rodosteam.questtime.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
     lateinit var navView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +36,17 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener{_, destination, _ ->
+            when (destination.id) {
+                R.id.navigation_library,
+                R.id.navigation_editor,
+                R.id.navigation_settings -> navView.visibility = View.VISIBLE
+                else -> {
+                    navView.visibility = View.GONE
+                }
+            }
+
+        }
     }
 
 }

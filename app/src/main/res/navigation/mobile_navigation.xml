@@ -39,15 +39,13 @@
     <fragment
             android:id="@+id/navigation_quest_preview"
             android:name="dev.rodosteam.questtime.screen.preview.QuestPreviewFragment"
-            tools:layout="@layout/fragment_library_preview">
+            tools:layout="@layout/fragment_library_preview" android:label="">
         <action
                 android:id="@+id/action_questPreviewFragment_to_questContentFragment"
                 app:destination="@id/navigation_quest_content"/>
-        <action android:id="@+id/action_navigation_quest_preview_to_navigation_library2"
-                app:destination="@id/navigation_library"/>
     </fragment>
     <fragment
             android:id="@+id/navigation_quest_content"
             android:name="dev.rodosteam.questtime.screen.questContent.QuestContentFragment"
-            />
+            android:label=""/>
 </navigation>

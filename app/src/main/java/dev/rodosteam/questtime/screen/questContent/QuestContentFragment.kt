@@ -28,6 +28,8 @@ class QuestContentFragment : BaseFragment() {
         val id = arguments!!.getInt(QUEST_KEY)
         val quest = app.findQuestItemRepo.findById(id)
         quest?.let {
+            // TODO do good
+            mainActivity.supportActionBar?.title = it.title
             binding.fragmentContentContent.text = it.title
         }
         return binding.root

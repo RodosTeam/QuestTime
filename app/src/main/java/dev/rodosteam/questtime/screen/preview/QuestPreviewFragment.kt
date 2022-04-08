@@ -41,7 +41,7 @@ class QuestPreviewFragment : BaseFragment() {
             binding.fragmentPreviewTitle.text = it.title
             binding.fragmentPreviewDescription.text = it.description
             binding.fragmentPreviewAuthor.text = it.author
-            binding.fragmentPreviewInfo.text = "${it.downloads} установок"
+            binding.fragmentPreviewInfo.text = getString(R.string.downloads_info, it.downloads)
         }
         //TODO вся логика должна быть в ViewModel но пока что так
         val downloaded = arguments!!.getBoolean(DOWNLOADED_KEY)
@@ -52,7 +52,7 @@ class QuestPreviewFragment : BaseFragment() {
             }
             setQuestDownloaded(quest)
         } else {
-            binding.fragmentPreviewLeftButton.text = "Download"
+            binding.fragmentPreviewLeftButton.text = getString(R.string.download_button)
             binding.fragmentPreviewPlayButton.visibility = View.GONE
         }
 
@@ -60,7 +60,7 @@ class QuestPreviewFragment : BaseFragment() {
     }
 
     private fun setQuestDownloaded(quest: QuestItem) {
-        binding.fragmentPreviewLeftButton.text = "Delete"
+        binding.fragmentPreviewLeftButton.text = getString(R.string.delete_button)
         binding.fragmentPreviewPlayButton.visibility = View.VISIBLE
         binding.fragmentPreviewPlayButton.setOnClickListener {
             findNavController().navigate(
@@ -75,7 +75,7 @@ class QuestPreviewFragment : BaseFragment() {
     }
 
     private fun setQuestDeleted(quest: QuestItem) {
-        binding.fragmentPreviewLeftButton.text = "Download"
+        binding.fragmentPreviewLeftButton.text = getString(R.string.download_button)
         binding.fragmentPreviewPlayButton.visibility = View.GONE
         binding.fragmentPreviewLeftButton
         binding.fragmentPreviewLeftButton.setOnClickListener {
