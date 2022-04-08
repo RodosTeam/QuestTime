@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import dev.rodosteam.questtime.databinding.FragmentContentBinding
-import dev.rodosteam.questtime.quest.model.QuestMeta
 import dev.rodosteam.questtime.quest.model.Walkthrough
 import dev.rodosteam.questtime.screen.common.base.BaseFragment
 import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.QUEST_KEY
@@ -21,7 +20,7 @@ class QuestContentFragment : BaseFragment() {
     private lateinit var viewModel: QuestContentViewModel
     private var _binding: FragmentContentBinding? = null
     private val binding get() = _binding!!
-    private lateinit var buttons : List<Button>; // TODO optimize
+    private lateinit var buttons : List<Button> // TODO optimize
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,19 +52,19 @@ class QuestContentFragment : BaseFragment() {
     }
 
     private fun sync(walk: Walkthrough) {
-        val choices = walk.page.choices.size;
+        val choices = walk.page.choices.size
         for(i in 0..3) {
             if( i < choices) {
                 activateButton(i, walk)
             } else {
-                deactivateButton(i, walk)
+                deactivateButton(i)
             }
         }
     }
 
     private fun activateButton(order : Int, walk: Walkthrough) {
-        val button = buttons.get(order)
-        button.text = walk.page.choices.get(order).displayText //ну надо чет написать
+        val button = buttons[order]
+        button.text = walk.page.choices[order].displayText //ну надо чет написать
         button.setOnClickListener{ // чет сделать
             walk.choose(order)
             sync(walk)
@@ -73,8 +72,8 @@ class QuestContentFragment : BaseFragment() {
         button.visibility = View.VISIBLE
     }
 
-    private fun deactivateButton(order : Int, walk: Walkthrough) {
-        val button = buttons.get(order)
+    private fun deactivateButton(order : Int) {
+        val button = buttons[order]
         button.text = ""
         button.visibility = View.GONE
     }
