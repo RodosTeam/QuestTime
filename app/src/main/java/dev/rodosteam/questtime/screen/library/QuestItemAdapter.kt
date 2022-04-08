@@ -3,6 +3,7 @@ package dev.rodosteam.questtime.screen.library
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
@@ -25,14 +26,15 @@ class QuestItemAdapter(
      */
     class QuestItemHolder(val view: View) : RecyclerView.ViewHolder(view) {
         private var titleTv: TextView = view.findViewById(R.id.fragment_library_item__title)
-        private var descriptionTv: TextView =
-            view.findViewById(R.id.fragment_library_item__description)
+        private var descriptionTv: TextView = view.findViewById(R.id.fragment_library_item__description)
+        private var imageView: ImageView = view.findViewById(R.id.fragment_library_item__image)
         var playButton: FloatingActionButton =
             view.findViewById(R.id.fragment_library_item__playButton)
 
         fun bind(item: QuestItem) {
             titleTv.text = item.title
             descriptionTv.text = item.description
+            imageView.setImageResource(item.iconId)
         }
     }
 
