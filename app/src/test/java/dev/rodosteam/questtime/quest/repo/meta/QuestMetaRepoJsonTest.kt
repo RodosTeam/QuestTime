@@ -6,8 +6,6 @@ import org.junit.Test
 
 class QuestMetaRepoJsonTest {
     companion object {
-        const val QUEST_META_PATH = "quest_library/quest_information.json"
-
         const val TEST_QUEST_ID = -1
         const val TEST_QUEST_TITLE = "Test quest"
         const val TEST_QUEST_DESCRIPTION = "Test quest description"

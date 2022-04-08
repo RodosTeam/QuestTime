@@ -3,37 +3,37 @@ package dev.rodosteam.questtime.quest.repo.meta
 import android.content.res.Resources
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.quest.model.QuestMeta
+import dev.rodosteam.questtime.utils.asIterableOfJSONObjects
 import org.json.JSONArray
 import org.json.JSONObject
 import org.json.JSONTokener
 
 class QuestMetaRepoJson(resources: Resources) : QuestMetaRepoBase() {
     companion object {
-        const val QUESTS_META_ARRAY = "questsMeta"
-        const val ID = "id"
-        const val TITLE = "title"
-        const val DESCRIPTION = "description"
-        const val AUTHOR = "author"
-        const val DOWNLOADS = "downloads"
-        const val FAVORITES = "favorites"
-        const val CREATED = "created"
-        const val FILENAME = "filename"
+        private const val QUESTS_META_ARRAY = "questsMeta"
+        private const val ID = "id"
+        private const val TITLE = "title"
+        private const val DESCRIPTION = "description"
+        private const val AUTHOR = "author"
+        private const val DOWNLOADS = "downloads"
+        private const val FAVORITES = "favorites"
+        private const val CREATED = "created"
+        private const val FILENAME = "filename"
         private val IMAGES_MAP = mapOf(-1 to R.drawable.test_icon, 1 to R.drawable.hobbit_lego_icon)
 
         private fun readMetas(jsonMetas: JSONArray): Iterable<QuestMeta> =
-            (0 until jsonMetas.length()).asIterable().map {
-                val curJsonMeta = jsonMetas.getJSONObject(it)
-                val id = curJsonMeta.getInt(ID)
+            jsonMetas.asIterableOfJSONObjects().map { currentJson ->
+                val metaId = currentJson.getInt(ID)
                 QuestMeta(
-                    id,
-                    curJsonMeta.getString(TITLE),
-                    curJsonMeta.getString(DESCRIPTION),
-                    curJsonMeta.getString(AUTHOR),
-                    curJsonMeta.getInt(DOWNLOADS),
-                    curJsonMeta.getInt(FAVORITES),
-                    curJsonMeta.getLong(CREATED),
-                    IMAGES_MAP.getValue(id),
-                    curJsonMeta.getString(FILENAME)
+                    metaId,
+                    currentJson.getString(TITLE),
+                    currentJson.getString(DESCRIPTION),
+                    currentJson.getString(AUTHOR),
+                    currentJson.getInt(DOWNLOADS),
+                    currentJson.getInt(FAVORITES),
+                    currentJson.getLong(CREATED),
+                    IMAGES_MAP.getValue(metaId),
+                    currentJson.getString(FILENAME)
                 )
             }
     }
