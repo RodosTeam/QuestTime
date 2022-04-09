@@ -27,7 +27,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Run a build
-        run: ./gradlew build --debug
+        run: ./gradlew build
         
   tests:
     runs-on: ubuntu-latest
@@ -44,4 +44,4 @@ jobs:
         run: chmod +x gradlew
     
       - name: Run all tests
-        run: ./gradlew test --debug
+        run: ./gradlew test
