@@ -29,6 +29,17 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    testOptions {
+        unitTests.returnDefaultValues = true
+        unitTests.all {
+            testLogging {
+                outputs.upToDateWhen {false}
+                events "passed", "failed", "standardError"
+                showCauses true
+                showExceptions true
+            }
+        }
+    }
 }
 
 dependencies {
