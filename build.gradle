@@ -7,12 +7,23 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.3"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0"
+        classpath 'com.github.ksoichiro:gradle-console-reporter:0.6.3'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
+apply plugin: 'com.github.ksoichiro.console.reporter'
+
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+consoleReporter {
+    junit {
+        summaryEnabled true
+        stdoutEnabled true
+        stderrEnabled true
+    }
 }
