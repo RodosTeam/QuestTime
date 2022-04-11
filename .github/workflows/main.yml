@@ -28,3 +28,8 @@ jobs:
 
       - name: Run a build
         run: ./gradlew build
+        
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        with:
+          reporter: java-junit
