@@ -37,15 +37,28 @@
             android:label="@string/title_settings"
             tools:layout="@layout/fragment_settings"/>
     <fragment
-            android:id="@+id/navigation_quest_preview"
-            android:name="dev.rodosteam.questtime.screen.preview.QuestPreviewFragment"
-            tools:layout="@layout/fragment_library_preview" android:label="">
+        android:id="@+id/navigation_quest_preview"
+        android:name="dev.rodosteam.questtime.screen.preview.QuestPreviewFragment"
+        android:label=""
+        tools:layout="@layout/fragment_library_preview">
         <action
-                android:id="@+id/action_questPreviewFragment_to_questContentFragment"
-                app:destination="@id/navigation_quest_content"/>
+            android:id="@+id/action_questPreviewFragment_to_questContentFragment"
+            app:destination="@id/navigation_quest_content" />
     </fragment>
     <fragment
             android:id="@+id/navigation_quest_content"
             android:name="dev.rodosteam.questtime.screen.questContent.QuestContentFragment"
             android:label=""/>
+    <fragment
+        android:id="@+id/navigation_favorites"
+        android:name="dev.rodosteam.questtime.screen.favorites.FavoritesFragment"
+        android:label="@string/title_favorites"
+        tools:layout="@layout/fragment_favorites">
+        <action
+            android:id="@+id/action_navigation_favorites_to_navigation_quest_preview"
+            app:destination="@id/navigation_quest_preview" />
+        <action
+            android:id="@+id/action_navigation_favorites_to_navigation_quest_content"
+            app:destination="@id/navigation_quest_content" />
+    </fragment>
 </navigation>

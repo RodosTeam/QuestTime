@@ -1,4 +1,4 @@
-package dev.rodosteam.questtime.screen.library
+package dev.rodosteam.questtime.screen.favorites
 
 import android.view.LayoutInflater
 import android.view.View
@@ -13,8 +13,8 @@ import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.quest.model.QuestMeta
 import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.DOWNLOADED_KEY
 import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.QUEST_KEY
-import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.REPO_LIBRARY_PREVIEW
 import dev.rodosteam.questtime.screen.questContent.QuestContentFragment.Companion.REPO_LIBRARY_CONTENT
+import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.REPO_LIBRARY_PREVIEW
 
 class QuestItemAdapter(
     private val quests: List<QuestMeta>,
@@ -38,7 +38,7 @@ class QuestItemAdapter(
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): QuestItemHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.fragment_library_item, viewGroup, false)
+            .inflate(R.layout.fragment_favorites_item, viewGroup, false)
         return QuestItemHolder(view)
     }
 
@@ -46,20 +46,20 @@ class QuestItemAdapter(
         holder.bind(quests[position])
         holder.playButton.setOnClickListener {
             navController.navigate(
-                R.id.action_navigation_library_to_questContentFragment,
+                R.id.action_navigation_favorites_to_navigation_quest_content,
                 bundleOf(
                     QUEST_KEY to quests[position].id,
-                    REPO_LIBRARY_CONTENT to true
+                    REPO_LIBRARY_CONTENT to false
                 )
             )
         }
         holder.view.setOnClickListener {
             navController.navigate(
-                R.id.action_navigation_library_to_questPreviewFragment,
+                R.id.action_navigation_favorites_to_navigation_quest_preview,
                 bundleOf(
                     QUEST_KEY to quests[position].id,
                     DOWNLOADED_KEY to true,
-                    REPO_LIBRARY_PREVIEW to true
+                    REPO_LIBRARY_PREVIEW to false
                 )
             )
         }
