@@ -11,11 +11,14 @@ import dev.rodosteam.questtime.databinding.FragmentContentBinding
 import dev.rodosteam.questtime.quest.model.QuestContent
 import dev.rodosteam.questtime.quest.model.Walkthrough
 import dev.rodosteam.questtime.screen.common.base.BaseFragment
+import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment
 import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.QUEST_KEY
 
 class QuestContentFragment : BaseFragment() {
 
     companion object {
+        const val REPO_LIBRARY_CONTENT = "repo_library"
+
         fun newInstance() = QuestContentFragment()
     }
 
@@ -32,7 +35,12 @@ class QuestContentFragment : BaseFragment() {
         viewModel = ViewModelProvider(this)[QuestContentViewModel::class.java]
         _binding = FragmentContentBinding.inflate(inflater, container, false)
         val id = requireArguments().getInt(QUEST_KEY)
-        val quest = app.questMetaRepo.findById(id)
+        var isLibrary = requireArguments().getBoolean(REPO_LIBRARY_CONTENT)
+        var meta = app.questFavoritesMetaRepo
+        if (isLibrary) {
+            meta = app.questMetaRepo
+        }
+        val quest = meta.findById(id)
 
         textView = binding.fragmentContentText
 
@@ -49,7 +57,11 @@ class QuestContentFragment : BaseFragment() {
             mainActivity.supportActionBar?.title = it.title
             binding.fragmentContentContent.text = it.title
             binding.fragmentContentImage.setImageResource(it.iconId)
-            content = app.questContentRepo.findById(it.id)
+            var metaContent = app.questFavoritesContentRepo
+            if (isLibrary) {
+                metaContent = app.questContentRepo
+            }
+            content = metaContent.findById(it.id)
         }
 
         if (content != null) {

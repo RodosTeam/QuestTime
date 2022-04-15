@@ -1,16 +1,13 @@
 package dev.rodosteam.questtime.quest.repo.content
 
-import android.content.res.Resources
-import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.quest.model.QuestContent
 import dev.rodosteam.questtime.utils.asIterableOfJSONObjects
 import org.json.JSONArray
 import org.json.JSONObject
 import org.json.JSONTokener
+import java.io.File
 
-class QuestContentRepoJson constructor(
-    private val resources: Resources
-) : QuestContentRepo {
+class QuestContentFavorites(var favoriteDirectory: File) : QuestContentRepo {
     companion object {
         private const val START_NODE_ID = "startNodeId"
         private const val PAGES = "pages"
@@ -18,19 +15,30 @@ class QuestContentRepoJson constructor(
         private const val ID = "id"
         private const val NEXT_PAGE_ID = "nextPageId"
         private const val DISPLAY_TEXT = "displayText"
-        private val CONTENT_MAP = mapOf(-1 to R.raw.test_quest, 1 to R.raw.hobbit)
     }
 
-    override fun findById(id: Int): QuestContent? = CONTENT_MAP[id]?.let { resId: Int ->
-        resources.openRawResource(resId).bufferedReader().use { reader ->
-            val jsonObject = JSONTokener(reader.readText()).nextValue() as JSONObject
-            val jsonPages = jsonObject.getJSONArray(PAGES)
-            QuestContent(
-                readPages(jsonPages),
-                QuestContent.Page.Id(jsonObject.getLong(START_NODE_ID)),
-                jsonObject.get("name").toString()
-            )
+    override fun findById(id: Int): QuestContent? {
+        if (favoriteDirectory.listFiles()?.size != 0) {
+            for (contentFile in favoriteDirectory.listFiles()!!) {
+                if (contentFile.name.equals("favoritesContent_$id.json")) {
+                    contentFile.bufferedReader().use { reader ->
+                        val jsonObject = JSONTokener(reader.readText()).nextValue() as JSONObject
+                        val jsonPages = jsonObject.optJSONArray(PAGES)
+                        val jsonId = jsonObject.optLong(START_NODE_ID)
+                        val jsonName = jsonObject.opt("name")
+                        if (jsonName == null || jsonPages == null) {
+                            return null
+                        }
+                        return QuestContent(
+                            readPages(jsonPages),
+                            QuestContent.Page.Id(jsonId),
+                            jsonName.toString()
+                        )
+                    }
+                }
+            }
         }
+        return null
     }
 
     private fun readPages(jsonPages: JSONArray): Iterable<QuestContent.Page> =

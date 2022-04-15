@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
             android:id="@+id/navigation_library"
@@ -12,13 +13,17 @@
             android:title="@string/title_external"/>
 
     <item
+        android:id="@+id/navigation_favorites"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        android:title="@string/title_favorites" />
+    <item
             android:id="@+id/navigation_editor"
             android:icon="@drawable/ic_editor_black_24dp"
             android:title="@string/title_editor"/>
 
     <item
-            android:id="@+id/navigation_settings"
-            android:icon="@drawable/ic_settings_black_24dp"
-            android:title="@string/title_settings"/>
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="@string/title_settings" />
 
 </menu>

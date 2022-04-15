@@ -3,11 +3,12 @@ package dev.rodosteam.questtime.quest.model
 /**
  * Содержимое квеста - суть ориентированный граф, заданный списком смежности
  */
-class QuestContent private constructor(val pages: Map<Page.Id, Page>, val startingId: Page.Id) {
+class QuestContent private constructor(val pages: Map<Page.Id, Page>, val startingId: Page.Id, val name: String) {
     // Создание квеста из Iterable страниц
-    constructor(pages: Iterable<Page>, startingId: Page.Id) : this(
+    constructor(pages: Iterable<Page>, startingId: Page.Id, name: String) : this(
         pages.associateBy { it.id },
-        startingId
+        startingId,
+        name
     )
 
     /**
@@ -21,7 +22,11 @@ class QuestContent private constructor(val pages: Map<Page.Id, Page>, val starti
         val choices: List<Choice>
     ) {
         @JvmInline
-        value class Id(private val id: Long)
+        value class Id(private val id: Long) {
+            override fun toString(): String {
+                return id.toString()
+            }
+        }
 
         data class Choice(
             val nextPageId: Id,
