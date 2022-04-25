@@ -1,6 +1,8 @@
 package dev.rodosteam.questtime
 
 import android.app.Application
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import dev.rodosteam.questtime.quest.repo.content.QuestContentRepo
 import dev.rodosteam.questtime.quest.repo.content.QuestContentRepoJson
 import dev.rodosteam.questtime.quest.repo.meta.QuestMetaRepo
@@ -22,5 +24,13 @@ class App : Application() {
 
     val questContentRepo: QuestContentRepo by lazy {
         QuestContentRepoJson(questMetaRepo, intStorage)
+    }
+
+    val fireMetaDb: DatabaseReference by lazy {
+        FirebaseDatabase.getInstance().getReference("questsMeto")
+    }
+
+    val fireContentDb: DatabaseReference by lazy {
+        FirebaseDatabase.getInstance().getReference("questsContent")
     }
 }

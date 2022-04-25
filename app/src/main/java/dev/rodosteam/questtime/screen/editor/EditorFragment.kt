@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import dev.rodosteam.questtime.api.dto.QuestContentDto
+import dev.rodosteam.questtime.api.dto.QuestMetaDto
 import dev.rodosteam.questtime.databinding.FragmentEditorBinding
 import dev.rodosteam.questtime.screen.common.base.BaseFragment
 
@@ -23,15 +23,39 @@ class EditorFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         editorViewModel =
-            ViewModelProvider(this).get(EditorViewModel::class.java)
+            ViewModelProvider(this)[EditorViewModel::class.java]
 
         _binding = FragmentEditorBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textEditor
-        editorViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        binding.fragmentEditorCreateBtn.setOnClickListener {
+
+            val id = binding.fragmentEditorIdEt.text.toString().toLong()
+            val questName = binding.fragmentEditorNameEt.text.toString()
+            val questDescription = binding.fragmentEditorDescriptionEt.text.toString()
+            val questAuthor = binding.fragmentEditorAuthorEt.text.toString()
+            val countOfDownloads = binding.fragmentEditorDownloadsEt.text.toString().toInt()
+            val countOfFavorites = binding.fragmentEditorFavoritesEt.text.toString().toInt()
+            val createdTime = System.currentTimeMillis()
+            val iconImageUrl = binding.fragmentEditorImageUrlEt.text.toString()
+            val jsonContent = binding.fragmentEditorJsonEt.text.toString()
+
+            val questItemDto = QuestMetaDto(
+                id,
+                questName,
+                questDescription,
+                questAuthor,
+                countOfDownloads,
+                countOfFavorites,
+                createdTime,
+                iconImageUrl
+            )
+            val questContentDto = QuestContentDto(id, jsonContent)
+            app.fireMetaDb.push().setValue(questItemDto)
+            app.fireContentDb.push().setValue(questContentDto)
+
+        }
+
         return root
     }
 
