@@ -1,12 +1,12 @@
 package dev.rodosteam.questtime.api.dto
 
 data class QuestMetaDto(
-    val id: Long,
-    val title: String,
-    val text: String,
-    val author: String,
-    val downloads: Int,
-    val favorites: Int,
-    val created: Long,
-    val imageUrl: String
+    var id: Long = 0L,
+    var title: String = "",
+    var text: String = "",
+    var author: String = "",
+    var downloads: Int = 0,
+    var favorites: Int = 0,
+    var created: Long = 0L,
+    var imageUrl: String = ""
 )

@@ -23,7 +23,11 @@
             android:id="@+id/navigation_external"
             android:name="dev.rodosteam.questtime.screen.external.ExternalFragment"
             android:label="@string/title_external"
-            tools:layout="@layout/fragment_external"/>
+            tools:layout="@layout/fragment_external">
+        <action
+            android:id="@+id/action_navigation_external_to_navigation_quest_preview"
+            app:destination="@id/navigation_quest_preview" />
+    </fragment>
 
     <fragment
             android:id="@+id/navigation_editor"

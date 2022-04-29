@@ -5,6 +5,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import dev.rodosteam.questtime.quest.repo.content.QuestContentRepo
 import dev.rodosteam.questtime.quest.repo.content.QuestContentRepoJson
+import dev.rodosteam.questtime.quest.repo.meta.QuestMetaFireBase
 import dev.rodosteam.questtime.quest.repo.meta.QuestMetaRepo
 import dev.rodosteam.questtime.quest.repo.meta.QuestMetaRepoJson
 import dev.rodosteam.questtime.quest.repo.meta.QuestMetaRepoMock
@@ -26,8 +27,8 @@ class App : Application() {
         QuestContentRepoJson(questMetaRepo, intStorage)
     }
 
-    val fireMetaDb: DatabaseReference by lazy {
-        FirebaseDatabase.getInstance().getReference("questsMeto")
+    val metaCloud: QuestMetaFireBase by lazy {
+        QuestMetaFireBase()
     }
 
     val fireContentDb: DatabaseReference by lazy {

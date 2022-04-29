@@ -9,8 +9,8 @@
     <EditText
         android:id="@+id/fragment_editor__idEt"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="36dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
         android:hint="id of quest"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -20,18 +20,16 @@
     <EditText
         android:id="@+id/fragment_editor__nameEt"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:hint="name of quest"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_editor__idEt" />
 
     <EditText
         android:id="@+id/fragment_editor__descriptionEt"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="50dp"
         android:hint="Description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -41,8 +39,7 @@
     <EditText
         android:id="@+id/fragment_editor__authorEt"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="40dp"
         android:hint="Author Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -53,8 +50,7 @@
     <EditText
         android:id="@+id/fragment_editor__downloadsEt"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="40dp"
         android:hint="count of downloads"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -65,8 +61,7 @@
     <EditText
         android:id="@+id/fragment_editor__favoritesEt"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="40dp"
         android:hint="count of favorites"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -77,7 +72,7 @@
     <EditText
         android:id="@+id/fragment_editor__imageUrlEt"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:hint="Image url"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -87,8 +82,7 @@
     <EditText
         android:id="@+id/fragment_editor__jsonEt"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="40dp"
         android:hint="Json object graph"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -98,8 +92,7 @@
     <Button
         android:id="@+id/fragment_editor__createBtn"
         android:layout_width="100sp"
-        android:layout_height="50dp"
-        android:layout_marginTop="4dp"
+        android:layout_height="40dp"
         android:text="create"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

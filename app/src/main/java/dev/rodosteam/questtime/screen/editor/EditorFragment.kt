@@ -51,7 +51,7 @@ class EditorFragment : BaseFragment() {
                 iconImageUrl
             )
             val questContentDto = QuestContentDto(id, jsonContent)
-            app.fireMetaDb.push().setValue(questItemDto)
+            app.metaCloud.fireMetaReference.push().setValue(questItemDto)
             app.fireContentDb.push().setValue(questContentDto)
 
         }
