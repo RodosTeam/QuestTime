@@ -5,20 +5,31 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screen.settings.SettingsFragment">
+        tools:context=".screen.settings.SettingsFragment" android:id="@+id/fragment_settings__layout">
 
-    <TextView
-            android:id="@+id/text_settings"
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/fragment_settings_lang_container" android:padding="16dp"
+            android:background="?android:attr/selectableItemBackground">
+        <TextView
+                android:text="@string/language_settings"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:textAlignment="gravity"
+                android:textSize="20sp" android:id="@+id/fragment_settings_lang_container__name"
+                android:gravity="start" android:textColor="?android:textColorPrimary"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:textAlignment="gravity"
+                android:textSize="16sp" android:id="@+id/fragment_settings_lang_container__value"
+                android:gravity="start" android:textColor="?android:textColorSecondary"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,14 +1,19 @@
 package dev.rodosteam.questtime.screen.settings
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
+import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.FragmentSettingsBinding
 import dev.rodosteam.questtime.screen.common.base.BaseFragment
+import dev.rodosteam.questtime.utils.Languages
+import dev.rodosteam.questtime.utils.LocaleManager.changeLanguageCode
+import dev.rodosteam.questtime.utils.LocaleManager.getLanguagePosition
+
 
 class SettingsFragment : BaseFragment() {
 
@@ -25,15 +30,21 @@ class SettingsFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         settingsViewModel =
-            ViewModelProvider(this).get(SettingsViewModel::class.java)
+            ViewModelProvider(this)[SettingsViewModel::class.java]
 
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val textView: TextView = binding.textSettings
-        settingsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        val selected = getLanguagePosition(requireContext())
+        binding.fragmentSettingsLangContainerValue.text = Languages.values()[selected].label
+        binding.fragmentSettingsLangContainer.setOnClickListener {
+            AlertDialog.Builder(requireContext()).setTitle(R.string.language_settings).setSingleChoiceItems(
+                Languages.OPTIONS,
+                selected
+            ) { dialogInterface: DialogInterface?, i: Int ->
+                changeLanguageCode(requireContext(), mainActivity, Languages.values()[i].code, i)
+                dialogInterface?.dismiss()
+            }.show()
+        }
         return root
     }
 
@@ -41,4 +52,5 @@ class SettingsFragment : BaseFragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

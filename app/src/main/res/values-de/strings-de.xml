@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="find">suche</string>
+    <string name="default_info">0 laden</string>
+    <string name="downloads_info">%1$d laden</string>
+    <string name="image_description">Darstellung</string>
+    <string name="play_button">Start</string>
+    <string name="delete_button">Entfernen</string>
+    <string name="download_and_play_button">Start</string>
+    <string name="download_button">Beladen</string>
+    <string name="edit_button">Ändern</string>
+    <string name="favorite_button">Auswahl</string>
+    <string name="unfavorite_button">Ungüstig</string>
+    <string name="search_button">Suche</string>
+    <string name="search_text">Suche…</string>
+    <string name="title_library">Bibliotek</string>
+    <string name="title_external">Extern</string>
+    <string name="title_editor">Editor</string>
+    <string name="title_settings">Einstellung</string>
+    <string name="play">Play</string>
+    <string name="some_content">Einige Inhalte</string>
+    <string name="language_settings">Sprache:</string>
+</resources>

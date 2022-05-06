@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="find">поиск</string>
+    <string name="default_info">0 загрузок</string>
+    <string name="downloads_info">%1$d загрузок</string>
+    <string name="image_description">Изображение</string>
+    <string name="play_button">Старт</string>
+    <string name="delete_button">Удалить</string>
+    <string name="download_button">Загрузить</string>
+    <string name="edit_button">Изменить</string>
+    <string name="favorite_button">Избранное</string>
+    <string name="unfavorite_button">Удалить из избранного</string>
+    <string name="search_button">Поиск</string>
+    <string name="search_text">Поиск…</string>
+    <string name="title_external">Хранилище</string>
+    <string name="title_settings">Настройки</string>
+    <string name="play">Старт</string>
+    <string name="download_and_play_button">Старт</string>
+    <string name="some_content">Содержимое</string>
+    <string name="title_editor">Редактор</string>
+    <string name="title_library">Библиотека</string>
+    <string name="language_settings">Язык:</string>
+</resources>
