@@ -63,12 +63,6 @@ class QuestContentRepoJson(
         val questMeta = metaRepo.findById(id)
         questMeta ?: return null
 
-        val jsonObject =
-            JSONTokener(intStorage.read(questMeta.jsonContent)).nextValue() as JSONObject
-        val jsonPages = jsonObject.getJSONArray(PAGES)
-        return QuestContent(
-            readPages(jsonPages),
-            QuestContent.Page.Id(jsonObject.getLong(START_NODE_ID))
-        )
+        return readQuest(intStorage.read(questMeta.jsonContent))
     }
 }
