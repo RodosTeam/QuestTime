@@ -2,7 +2,6 @@ package dev.rodosteam.questtime.api.dto
 
 import dev.rodosteam.questtime.quest.model.QuestMeta
 
-
 fun getMeta(dto: QuestMetaDto): QuestMeta {
     return QuestMeta(
         dto.id.toInt(),
@@ -13,6 +12,6 @@ fun getMeta(dto: QuestMetaDto): QuestMeta {
         dto.favorites,
         dto.created,
         dto.imageUrl,
-        ""
+        dto.jsonContent
     )
 }

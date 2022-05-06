@@ -8,6 +8,6 @@ data class QuestMeta(
     val downloads: Int,
     val favorites: Int,
     val created: Long,
-    val iconFilename: String,
-    val filename: String
+    val iconUrl: String,
+    val jsonContent: String
 )

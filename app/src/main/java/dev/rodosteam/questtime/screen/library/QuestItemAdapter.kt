@@ -8,38 +8,42 @@ import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.rodosteam.questtime.R
+import dev.rodosteam.questtime.quest.database.Quest
 import dev.rodosteam.questtime.quest.model.QuestMeta
 import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.DOWNLOADED_KEY
 import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.QUEST_KEY
 import dev.rodosteam.questtime.utils.InternalStorage
 
 class QuestItemAdapter(
-    private val quests: List<QuestMeta>,
+    private val quests: List<Quest>,
     private val navController: NavController,
-    private val intStorage: InternalStorage
 ) :
     RecyclerView.Adapter<QuestItemAdapter.QuestItemHolder>() {
 
-    class QuestItemHolder(private val intStorage: InternalStorage, val view: View) : RecyclerView.ViewHolder(view) {
+    class QuestItemHolder(val view: View) : RecyclerView.ViewHolder(view) {
         private var titleTv: TextView = view.findViewById(R.id.fragment_library_item__title)
         private var descriptionTv: TextView = view.findViewById(R.id.fragment_library_item__description)
         private var imageView: ImageView = view.findViewById(R.id.fragment_library_item__image)
         var playButton: FloatingActionButton =
             view.findViewById(R.id.fragment_library_item__playButton)
 
-        fun bind(item: QuestMeta) {
+        fun bind(item: Quest) {
             titleTv.text = item.title
             descriptionTv.text = item.description
-            imageView.setImageBitmap(intStorage.getBitmap(item.iconFilename))
+            Glide.with(view)
+                .load(item.iconUrl)
+                .centerCrop()
+                .into(imageView)
         }
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): QuestItemHolder {
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.fragment_library_item, viewGroup, false)
-        return QuestItemHolder(intStorage, view)
+        return QuestItemHolder(view)
     }
 
     override fun onBindViewHolder(holder: QuestItemHolder, position: Int) {

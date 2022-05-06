@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import dev.rodosteam.questtime.api.dto.QuestContentDto
 import dev.rodosteam.questtime.api.dto.QuestMetaDto
 import dev.rodosteam.questtime.databinding.FragmentEditorBinding
 import dev.rodosteam.questtime.screen.common.base.BaseFragment
@@ -48,11 +47,10 @@ class EditorFragment : BaseFragment() {
                 countOfDownloads,
                 countOfFavorites,
                 createdTime,
-                iconImageUrl
+                iconImageUrl,
+                jsonContent
             )
-            val questContentDto = QuestContentDto(id, jsonContent)
             app.metaCloud.fireMetaReference.push().setValue(questItemDto)
-            app.fireContentDb.push().setValue(questContentDto)
 
         }
 

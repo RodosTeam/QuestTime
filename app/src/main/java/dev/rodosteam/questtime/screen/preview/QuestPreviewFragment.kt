@@ -4,11 +4,18 @@ import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
 import androidx.core.os.bundleOf
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.FragmentLibraryPreviewBinding
+import dev.rodosteam.questtime.quest.database.Quest
+import dev.rodosteam.questtime.quest.database.getQuestFromMeta
 import dev.rodosteam.questtime.quest.model.QuestMeta
 import dev.rodosteam.questtime.screen.common.base.BaseFragment
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 class QuestPreviewFragment : BaseFragment() {
 
@@ -33,34 +40,45 @@ class QuestPreviewFragment : BaseFragment() {
         if (arguments == null) {
             return binding.root
         }
-        val id = requireArguments().getInt(QUEST_KEY)
-        val quest = app.questMetaRepo.findById(id)
-        quest?.let {
-            // TODO do good
-            mainActivity.supportActionBar?.title = it.title
-            binding.fragmentPreviewImage.setImageBitmap(app.intStorage.getBitmap(it.iconFilename))
-            binding.fragmentPreviewTitle.text = it.title
-            binding.fragmentPreviewDescription.text = it.description
-            binding.fragmentPreviewAuthor.text = it.author
-            binding.fragmentPreviewInfo.text = getString(R.string.downloads_info, it.downloads)
-        }
+
         //TODO вся логика должна быть в ViewModel но пока что так
+        val quest: Quest?
+        val id = requireArguments().getInt(QUEST_KEY)
         val downloaded = requireArguments().getBoolean(DOWNLOADED_KEY)
         if (downloaded) {
+            quest = app.questRepo.lastLoaded[id]
             if (quest == null) {
                 findNavController().navigateUp()
                 return binding.root
             }
             setQuestDownloaded(quest)
         } else {
-            binding.fragmentPreviewLeftButton.text = getString(R.string.download_button)
-            binding.fragmentPreviewPlayButton.visibility = View.GONE
+            val meta = app.metaCloud.findById(id)
+            if (meta == null) {
+                findNavController().navigateUp()
+                return binding.root
+            }
+            quest = getQuestFromMeta(meta)
+            setQuestDeleted(quest)
+        }
+
+        quest.let {
+            // TODO do good
+            mainActivity.supportActionBar?.title = it.title
+            Glide.with(binding.root)
+                .load(quest.iconUrl)
+                .centerCrop()
+                .into(binding.fragmentPreviewImage)
+            binding.fragmentPreviewTitle.text = it.title
+            binding.fragmentPreviewDescription.text = it.description
+            binding.fragmentPreviewAuthor.text = it.author
+            binding.fragmentPreviewInfo.text = getString(R.string.downloads_info, it.downloads)
         }
 
         return binding.root
     }
 
-    private fun setQuestDownloaded(quest: QuestMeta) {
+    private fun setQuestDownloaded(quest: Quest) {
         binding.fragmentPreviewLeftButton.text = getString(R.string.delete_button)
         binding.fragmentPreviewPlayButton.visibility = View.VISIBLE
         binding.fragmentPreviewPlayButton.setOnClickListener {
@@ -75,7 +93,11 @@ class QuestPreviewFragment : BaseFragment() {
         }
     }
 
-    private fun setQuestDeleted(quest: QuestMeta) {
+    private fun setQuestDeleted(quest: Quest) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            app.questRepo.removeQuest(quest.id)
+            app.questRepo.readAllData()
+        }
         binding.fragmentPreviewLeftButton.text = getString(R.string.download_button)
         binding.fragmentPreviewPlayButton.visibility = View.GONE
         binding.fragmentPreviewLeftButton
@@ -84,8 +106,11 @@ class QuestPreviewFragment : BaseFragment() {
         }
     }
 
-    private fun downloadQuest(quest: QuestMeta) {
-        app.questMetaRepo.add(quest)
+    private fun downloadQuest(quest: Quest) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            app.questRepo.addQuest(quest)
+            app.questRepo.readAllData()
+        }
         setQuestDownloaded(quest)
     }
 

@@ -13,4 +13,5 @@ open class BaseFragmentWithOptionMenu : BaseFragment() {
         setHasOptionsMenu(true)
         return super.onCreateView(inflater, container, savedInstanceState)
     }
+
 }

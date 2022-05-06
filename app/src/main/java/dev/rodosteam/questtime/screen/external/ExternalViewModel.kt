@@ -1,13 +1,28 @@
 package dev.rodosteam.questtime.screen.external
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import dev.rodosteam.questtime.quest.database.Quest
+import dev.rodosteam.questtime.quest.database.QuestRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class ExternalViewModel : ViewModel() {
+class ExternalViewModel(private val repository: QuestRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is external Fragment"
+    var loaded = listOf<Quest>()
+
+    init {
+        getData()
     }
-    val text: LiveData<String> = _text
+
+    private fun getData() {
+        viewModelScope.launch(Dispatchers.IO) {
+            loaded = repository.readAllData()
+        }
+    }
+
+    fun addQuest(quest: Quest) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addQuest(quest)
+        }
+    }
 }

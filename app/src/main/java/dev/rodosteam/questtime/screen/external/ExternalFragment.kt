@@ -3,6 +3,7 @@ package dev.rodosteam.questtime.screen.external
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,11 +11,12 @@ import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.FragmentExternalBinding
 import dev.rodosteam.questtime.quest.model.QuestMeta
 import dev.rodosteam.questtime.screen.common.base.BaseFragmentWithOptionMenu
+import dev.rodosteam.questtime.utils.ViewModelFactory
 
 
 class ExternalFragment : BaseFragmentWithOptionMenu() {
 
-    private lateinit var externalViewModel: ExternalViewModel
+    private val viewModel: ExternalViewModel by viewModels { ViewModelFactory(app) }
     private var _binding: FragmentExternalBinding? = null
     lateinit var adapter: QuestItemAdapter
     lateinit var quests: MutableList<QuestMeta>
@@ -27,10 +29,10 @@ class ExternalFragment : BaseFragmentWithOptionMenu() {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        externalViewModel = ViewModelProvider(this)[ExternalViewModel::class.java]
         _binding = FragmentExternalBinding.inflate(inflater, container, false)
-        quests = app.metaCloud.findAll().toMutableList()
-        adapter = QuestItemAdapter(quests, findNavController())
+        val downloaded = app.questRepo.lastLoaded
+        quests = app.metaCloud.findAll().filter { it.id !in downloaded.keys  }.toMutableList()
+        adapter = QuestItemAdapter(quests, findNavController(), viewModel)
         binding.externalRecyclerView.adapter = adapter
         binding.externalRecyclerView.layoutManager = LinearLayoutManager(this.context)
         return binding.root
@@ -42,24 +44,27 @@ class ExternalFragment : BaseFragmentWithOptionMenu() {
         val searchView = menuItem?.actionView as SearchView
         searchView.queryHint = this.getString(R.string.search_text)
 
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextChange(p0: String?): Boolean {
-                if (p0 == "") {
-                    quests.clear()
-                    quests.addAll(app.metaCloud.findAll())
-                    adapter.notifyDataSetChanged()
-                } else {
-                    quests.clear()
-                    quests.addAll(app.metaCloud.findAllByName(p0.toString()))
-                    adapter.notifyDataSetChanged()
-                }
-                return true
-            }
-
-            override fun onQueryTextSubmit(p0: String?): Boolean {
-                return true
-            }
-        })
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            val downloaded = app.questRepo.lastLoaded
+//
+//            override fun onQueryTextChange(p0: String?): Boolean {
+//                if (p0 == "") {
+//                    quests.clear()
+//
+//                    quests = app.metaCloud.findAll().filter { it.id !in downloaded.keys  }.toMutableList()
+//                    adapter.notifyDataSetChanged()
+//                } else {
+//                    quests.clear()
+//                    quests = app.metaCloud.findAll().filter { it.id !in downloaded.keys  }.toMutableList()
+//                    adapter.notifyDataSetChanged()
+//                }
+//                return true
+//            }
+//
+//            override fun onQueryTextSubmit(p0: String?): Boolean {
+//                return true
+//            }
+//        })
 
         super.onCreateOptionsMenu(menu, inflater)
     }
