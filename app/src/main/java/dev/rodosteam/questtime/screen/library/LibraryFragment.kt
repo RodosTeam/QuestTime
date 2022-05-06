@@ -22,7 +22,7 @@ class LibraryFragment : BaseFragmentWithOptionMenu() {
     private val viewModel: LibraryViewModel by viewModels { ViewModelFactory(app) }
     private var _binding: FragmentLibraryBinding? = null
     lateinit var adapter: QuestItemAdapter
-    lateinit var quests: List<Quest>
+    val quests: MutableList<Quest> = emptyList<Quest>().toMutableList()
 
     private val binding get() = _binding!!
 
@@ -36,7 +36,8 @@ class LibraryFragment : BaseFragmentWithOptionMenu() {
         app.metaCloud
         viewModel.getData()
         _binding = FragmentLibraryBinding.inflate(inflater, container, false)
-        quests = viewModel.loaded
+        quests.clear()
+        quests.addAll(viewModel.loaded.toMutableList())
         adapter = QuestItemAdapter(quests, findNavController())
         binding.libraryRecyclerView.adapter = adapter
         binding.libraryRecyclerView.layoutManager = LinearLayoutManager(this.context)
@@ -52,14 +53,17 @@ class LibraryFragment : BaseFragmentWithOptionMenu() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(p0: String?): Boolean {
                 if (p0 == "") {
-                    //quests.clear()
-                    //quests.addAll(app.questRepo.readAllData)
+                    quests.clear()
+                    quests.addAll(viewModel.loaded)
                     adapter.notifyDataSetChanged()
                 } else {
-                    //quests.clear()
-                    //TODO
-                    //quests.addAll(app.questMetaRepo.findAllByName(p0.toString()))
-                    adapter.notifyDataSetChanged()
+                    if (p0 != null) {
+                        quests.clear()
+                        quests.addAll(viewModel.loaded.filter {
+                            it.title.lowercase().contains(p0.lowercase())
+                        })
+                        adapter.notifyDataSetChanged()
+                    }
                 }
                 return true
             }

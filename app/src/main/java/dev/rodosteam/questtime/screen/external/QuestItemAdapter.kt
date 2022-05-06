@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +19,7 @@ import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.DOW
 import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.QUEST_KEY
 
 class QuestItemAdapter(
-    private val quests: List<QuestMeta>,
+    private val quests: MutableList<QuestMeta>,
     private val navController: NavController,
     //FIXME very very bad
     private val vieModel: ExternalViewModel
@@ -57,6 +58,9 @@ class QuestItemAdapter(
         holder.downloadButton.setOnClickListener {
             Log.i("LOG", getQuestFromMeta(meta).toString())
             vieModel.addQuest(getQuestFromMeta(meta))
+            Toast.makeText(navController.context, "Downloading", Toast.LENGTH_SHORT).show()
+            quests.removeAt(position)
+            notifyItemChanged(position)
         }
         holder.view.setOnClickListener {
             navController.navigate(

@@ -19,7 +19,7 @@ class ExternalFragment : BaseFragmentWithOptionMenu() {
     private val viewModel: ExternalViewModel by viewModels { ViewModelFactory(app) }
     private var _binding: FragmentExternalBinding? = null
     lateinit var adapter: QuestItemAdapter
-    lateinit var quests: MutableList<QuestMeta>
+    val quests: MutableList<QuestMeta> = emptyList<QuestMeta>().toMutableList()
 
     private val binding get() = _binding!!
 
@@ -31,7 +31,8 @@ class ExternalFragment : BaseFragmentWithOptionMenu() {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentExternalBinding.inflate(inflater, container, false)
         val downloaded = app.questRepo.lastLoaded
-        quests = app.metaCloud.findAll().filter { it.id !in downloaded.keys  }.toMutableList()
+        quests.clear()
+        quests.addAll(app.metaCloud.findAll().filter { it.id !in downloaded.keys })
         adapter = QuestItemAdapter(quests, findNavController(), viewModel)
         binding.externalRecyclerView.adapter = adapter
         binding.externalRecyclerView.layoutManager = LinearLayoutManager(this.context)
@@ -43,28 +44,33 @@ class ExternalFragment : BaseFragmentWithOptionMenu() {
         val menuItem = menu.findItem(R.id.search_bar)
         val searchView = menuItem?.actionView as SearchView
         searchView.queryHint = this.getString(R.string.search_text)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            val downloaded = app.questRepo.lastLoaded
 
-//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            val downloaded = app.questRepo.lastLoaded
-//
-//            override fun onQueryTextChange(p0: String?): Boolean {
-//                if (p0 == "") {
-//                    quests.clear()
-//
-//                    quests = app.metaCloud.findAll().filter { it.id !in downloaded.keys  }.toMutableList()
-//                    adapter.notifyDataSetChanged()
-//                } else {
-//                    quests.clear()
-//                    quests = app.metaCloud.findAll().filter { it.id !in downloaded.keys  }.toMutableList()
-//                    adapter.notifyDataSetChanged()
-//                }
-//                return true
-//            }
-//
-//            override fun onQueryTextSubmit(p0: String?): Boolean {
-//                return true
-//            }
-//        })
+            override fun onQueryTextChange(p0: String?): Boolean {
+                if (p0 == "") {
+                    quests.clear()
+                    quests.addAll(app.metaCloud.findAll().filter { it.id !in downloaded.keys })
+                    adapter.notifyDataSetChanged()
+                } else {
+                    if (p0 != null) {
+                        quests.clear()
+                        quests.addAll(
+                            app.metaCloud.findAll().filter {
+                                it.id !in downloaded.keys &&
+                                        it.title.lowercase().contains(p0.lowercase())
+                            }
+                        )
+                        adapter.notifyDataSetChanged()
+                    }
+                }
+                return true
+            }
+
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return true
+            }
+        })
 
         super.onCreateOptionsMenu(menu, inflater)
     }

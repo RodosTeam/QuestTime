@@ -88,7 +88,6 @@ class QuestPreviewFragment : BaseFragment() {
             )
         }
         binding.fragmentPreviewLeftButton.setOnClickListener {
-            app.questMetaRepo.remove(quest.id)
             setQuestDeleted(quest)
         }
     }
