@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import dev.rodosteam.questtime.databinding.FragmentContentBinding
 import dev.rodosteam.questtime.quest.model.QuestContent
 import dev.rodosteam.questtime.quest.model.Walkthrough
+import dev.rodosteam.questtime.quest.repo.content.QuestContentRepoJson
 import dev.rodosteam.questtime.screen.common.base.BaseFragment
 import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.QUEST_KEY
 
@@ -53,11 +54,11 @@ class QuestContentFragment : BaseFragment() {
                 .load(quest.iconUrl)
                 .centerCrop()
                 .into(binding.fragmentContentImage)
-            //content = app.questContentRepo.findById(it.id)
+            content = QuestContentRepoJson.readQuest(quest.contentJson)
         }
 
         if (content != null) {
-            //sync(Walkthrough(content!!))
+            sync(Walkthrough(content!!))
         }
 
         return binding.root
