@@ -60,7 +60,8 @@ class QuestItemAdapter(
             vieModel.addQuest(getQuestFromMeta(meta))
             Toast.makeText(navController.context, "Downloading", Toast.LENGTH_SHORT).show()
             quests.removeAt(position)
-            notifyItemChanged(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, quests.size)
         }
         holder.view.setOnClickListener {
             navController.navigate(
