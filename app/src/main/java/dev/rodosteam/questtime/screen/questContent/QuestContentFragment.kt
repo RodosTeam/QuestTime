@@ -1,12 +1,13 @@
 package dev.rodosteam.questtime.screen.questContent
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import dev.rodosteam.questtime.databinding.FragmentContentBinding
 import dev.rodosteam.questtime.quest.model.QuestContent
@@ -80,9 +81,14 @@ class QuestContentFragment : BaseFragment() {
 
     private fun activateButton(order: Int, walk: Walkthrough) {
         val button = buttons[order]
-        button.text = walk.page.choices[order].displayText //ну надо чет написать
+        val text = walk.page.choices[order].displayText
+        button.text = if (text.length > 24) text.substring(0, 23) else text // до 14 символов
         button.setOnClickListener { // чет сделать
             sync(walk.choose(order))
+        }
+        button.setOnLongClickListener { // открыть диалог для подсказки
+            AlertDialog.Builder(requireContext()).setTitle(button.text).setMessage(text).show()
+            true
         }
         button.visibility = View.VISIBLE
     }

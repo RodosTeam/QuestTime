@@ -6,11 +6,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".screen.questContent.QuestContentFragment">
-
     <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/fragment_content__image"
             android:layout_width="0dp"
-            android:layout_height="128dp"
+            android:layout_height="112dp"
             android:layout_marginTop="8dp"
             android:contentDescription="@string/image_description"
             app:layout_constraintTop_toTopOf="parent"
@@ -18,14 +17,14 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:src="@tools:sample/avatars"/>
     <ScrollView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:id="@+id/scrollView2"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_content__image"
+            android:id="@+id/scroll"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-            android:layout_marginBottom="8dp">
+            app:layout_constraintEnd_toStartOf="@id/buttons"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_content__content"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_content__image" android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp" android:layout_marginTop="8dp">
         <androidx.appcompat.widget.AppCompatTextView
                 android:text="@string/lorem_ipsum2"
                 android:layout_width="match_parent"
@@ -38,26 +37,28 @@
                 app:layout_constraintEnd_toEndOf="parent"/>
     </ScrollView>
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/constraintLayout">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttons" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_content__content"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_content__image"
+            app:layout_constraintStart_toEndOf="@id/scroll" android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" android:layout_marginTop="8dp">
 
         <androidx.appcompat.widget.AppCompatButton
                 style="@style/Theme.QuestTime"
+                android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/fragment_content__button1"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:layout_marginBottom="4dp"
                 android:textSize="14sp"
-                android:minWidth="256dp"
+                android:minWidth="224dp"
+                android:minHeight="32dp"
                 android:background="?colorPrimary"
                 android:textColor="?colorOnSecondary"
-                android:maxLength="24"
+                android:maxLength="14"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +73,8 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
                 android:textSize="14sp"
-                android:minWidth="256dp"
+                android:minWidth="224dp"
+                android:minHeight="32dp"
                 android:background="?colorPrimary"
                 android:textColor="?colorOnSecondary"
                 android:maxLength="24"
@@ -90,7 +92,8 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
                 android:textSize="14sp"
-                android:minWidth="256dp"
+                android:minWidth="224dp"
+                android:minHeight="32dp"
                 android:background="?colorPrimary"
                 android:textColor="?colorOnSecondary"
                 android:maxLength="24"
@@ -106,9 +109,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/fragment_content__button4"
                 android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginBottom="2dp"
                 android:textSize="14sp"
-                android:minWidth="256dp"
+                android:minWidth="224dp"
+                android:minHeight="32dp"
                 android:background="?colorPrimary"
                 android:textColor="?colorOnSecondary"
                 android:maxLength="24"
@@ -122,15 +126,13 @@
             android:id="@+id/fragment_content__content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:text="@string/some_content"
             android:textAlignment="center"
             android:textSize="12sp"
             android:maxLength="24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/scroll"
             app:layout_constraintHorizontal_bias="0.0"
     />
 </androidx.constraintlayout.widget.ConstraintLayout>
