@@ -1,5 +1,6 @@
 package dev.rodosteam.questtime.screen.questContent
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import dev.rodosteam.questtime.databinding.FragmentContentBinding
@@ -16,11 +18,8 @@ import dev.rodosteam.questtime.quest.repo.content.QuestContentRepoJson
 import dev.rodosteam.questtime.screen.common.base.BaseFragment
 import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.QUEST_KEY
 
-class QuestContentFragment : BaseFragment() {
 
-    companion object {
-        fun newInstance() = QuestContentFragment()
-    }
+class QuestContentFragment : BaseFragment() {
 
     private lateinit var viewModel: QuestContentViewModel
     private var _binding: FragmentContentBinding? = null
@@ -32,6 +31,10 @@ class QuestContentFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        if (resources.configuration.orientation != Configuration.ORIENTATION_PORTRAIT) {
+            enterFullscreen()
+        }
+
         viewModel = ViewModelProvider(this)[QuestContentViewModel::class.java]
         _binding = FragmentContentBinding.inflate(inflater, container, false)
         val id = requireArguments().getInt(QUEST_KEY)
@@ -53,7 +56,6 @@ class QuestContentFragment : BaseFragment() {
             binding.fragmentContentContent.text = it.title
             Glide.with(binding.root)
                 .load(quest.iconUrl)
-                .centerCrop()
                 .into(binding.fragmentContentImage)
             content = QuestContentRepoJson.readQuest(quest.contentJson)
         }
@@ -96,7 +98,7 @@ class QuestContentFragment : BaseFragment() {
     private fun deactivateButton(order: Int) {
         val button = buttons[order]
         button.text = ""
-        button.visibility = View.GONE
+        button.visibility = View.INVISIBLE
     }
 
 
@@ -104,6 +106,21 @@ class QuestContentFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this)[QuestContentViewModel::class.java]
         // TODO: Use the ViewModel
+    }
+
+    override fun onStop() {
+        super.onStop()
+        exitFullscreen()
+    }
+
+    private fun enterFullscreen() {
+        val a = (activity as AppCompatActivity?)!!
+        a.supportActionBar!!.hide()
+    }
+
+    private fun exitFullscreen() {
+        val a = (activity as AppCompatActivity?)!!
+        a.supportActionBar!!.show()
     }
 
 }

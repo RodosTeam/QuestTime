@@ -1,6 +1,5 @@
 package dev.rodosteam.questtime.screen.common
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +11,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.ActivityMainBinding
 import dev.rodosteam.questtime.quest.repo.meta.QuestMetaRepoJson
-import dev.rodosteam.questtime.utils.LocaleManager
 
 class MainActivity : AppCompatActivity() {
 
