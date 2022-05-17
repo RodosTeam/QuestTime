@@ -25,8 +25,8 @@
             android:label="@string/title_external"
             tools:layout="@layout/fragment_external">
         <action
-            android:id="@+id/action_navigation_external_to_navigation_quest_preview"
-            app:destination="@id/navigation_quest_preview" />
+                android:id="@+id/action_navigation_external_to_navigation_quest_preview"
+                app:destination="@id/navigation_quest_preview"/>
     </fragment>
 
     <fragment
@@ -43,7 +43,8 @@
     <fragment
             android:id="@+id/navigation_quest_preview"
             android:name="dev.rodosteam.questtime.screen.preview.QuestPreviewFragment"
-            tools:layout="@layout/fragment_library_preview" android:label="">
+            tools:layout="@layout/fragment_library_preview"
+            android:label="">
         <action
                 android:id="@+id/action_questPreviewFragment_to_questContentFragment"
                 app:destination="@id/navigation_quest_content"/>
