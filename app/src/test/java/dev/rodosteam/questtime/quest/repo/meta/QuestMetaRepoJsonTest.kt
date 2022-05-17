@@ -17,8 +17,8 @@ class QuestMetaRepoJsonTest {
             downloads = 0,
             favorites = 0,
             created = 0L,
-            iconFilename = "quests_library/images/test_icon.png",
-            filename = "quests_library/test_quest.json"
+            iconUrl = "quests_library/images/test_icon.png",
+            jsonContent = "quests_library/test_quest.json"
         )
     }
 
