@@ -19,7 +19,6 @@
             android:layout_marginBottom="8dp"
             android:contentDescription="@string/image_description"
             android:background="?colorPrimary"
-            android:padding="1dp"
             android:scaleType="fitXY"
             android:src="@drawable/ic_launcher_foreground"
             tools:srcCompat="@tools:sample/backgrounds/scenic"
@@ -27,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/fragment_library_item__data"
-            />
+    />
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/fragment_library_item__data"
@@ -52,7 +51,7 @@
                 android:gravity="start|top"
                 android:text="@string/default_title"
                 android:textAlignment="viewStart"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:maxLines="1"
                 android:ellipsize="end"
@@ -65,11 +64,11 @@
                 android:id="@+id/fragment_library_item__description"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:padding="2dp"
+                android:padding="1dp"
                 android:gravity="start|top"
                 android:text="@string/lorem_ipsum"
                 android:textAlignment="viewStart"
-                android:textSize="12sp"
+                android:textSize="16sp"
                 android:maxLines="4"
                 android:ellipsize="end"
                 app:layout_constraintStart_toStartOf="parent"
@@ -92,6 +91,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fragment_library_item__data"/>
+            app:layout_constraintStart_toEndOf="@+id/fragment_library_item__data" app:fabCustomSize="44dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

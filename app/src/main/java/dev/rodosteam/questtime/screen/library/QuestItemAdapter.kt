@@ -12,10 +12,8 @@ import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.quest.database.Quest
-import dev.rodosteam.questtime.quest.model.QuestMeta
 import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.DOWNLOADED_KEY
 import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.QUEST_KEY
-import dev.rodosteam.questtime.utils.InternalStorage
 
 class QuestItemAdapter(
     private val quests: List<Quest>,
@@ -42,7 +40,7 @@ class QuestItemAdapter(
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): QuestItemHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.fragment_library_item, viewGroup, false)
+            .inflate(R.layout.fragment_list_item, viewGroup, false)
         return QuestItemHolder(view)
     }
 

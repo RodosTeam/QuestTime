@@ -1,5 +1,6 @@
 package dev.rodosteam.questtime.screen.common
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.ActivityMainBinding
 import dev.rodosteam.questtime.quest.repo.meta.QuestMetaRepoJson
+import dev.rodosteam.questtime.utils.LocaleManager
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        val navBar: BottomNavigationView = binding.bottomNavBar
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
@@ -38,18 +40,22 @@ class MainActivity : AppCompatActivity() {
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        navBar.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.navigation_library,
                 R.id.navigation_external,
                 R.id.navigation_editor,
-                R.id.navigation_settings -> navView.visibility = View.VISIBLE
+                R.id.navigation_settings -> navBar.visibility = View.VISIBLE
                 else -> {
-                    navView.visibility = View.GONE
+                    navBar.visibility = View.GONE
                 }
             }
         }
+
+        // set library as homepage
+        //navBar.selectedItemId = R.id.navigation_library
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -1,6 +1,5 @@
 package dev.rodosteam.questtime.screen.questContent
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -31,9 +30,7 @@ class QuestContentFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        if (resources.configuration.orientation != Configuration.ORIENTATION_PORTRAIT) {
-            enterFullscreen()
-        }
+        enterFullscreen()
 
         viewModel = ViewModelProvider(this)[QuestContentViewModel::class.java]
         _binding = FragmentContentBinding.inflate(inflater, container, false)
@@ -53,7 +50,6 @@ class QuestContentFragment : BaseFragment() {
         quest?.let {
             // TODO do good
             mainActivity.supportActionBar?.title = it.title
-            binding.fragmentContentContent.text = it.title
             Glide.with(binding.root)
                 .load(quest.iconUrl)
                 .into(binding.fragmentContentImage)

@@ -43,16 +43,15 @@
     </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/buttons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_content__content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/scroll"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_content__image">
+            android:id="@+id/buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/scroll"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_content__image"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_content__content">
 
         <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/fragment_content__button1"
