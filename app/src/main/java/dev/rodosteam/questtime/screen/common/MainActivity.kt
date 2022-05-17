@@ -20,27 +20,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         // Init repo from resources
         QuestMetaRepoJson.initRes(resources, applicationContext)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         val navBar: BottomNavigationView = binding.bottomNavBar
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_library,
-                R.id.navigation_external,
-                R.id.navigation_editor,
-                R.id.navigation_settings
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navBar.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.navigation_library,
@@ -52,10 +42,17 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        setupActionBarWithNavController(navController, AppBarConfiguration(
+            setOf(
+                R.id.navigation_library,
+                R.id.navigation_external,
+                R.id.navigation_editor,
+                R.id.navigation_settings
+            )))
 
+        navBar.setupWithNavController(navController)
         // set library as homepage
-        //navBar.selectedItemId = R.id.navigation_library
-
+        navBar.selectedItemId = R.id.navigation_library
     }
 
     override fun onSupportNavigateUp(): Boolean {

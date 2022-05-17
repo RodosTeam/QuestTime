@@ -27,13 +27,12 @@ class QuestItemAdapter(
     RecyclerView.Adapter<QuestItemAdapter.QuestItemHolder>() {
 
     class QuestItemHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        private var titleTv: TextView = view.findViewById(R.id.fragment_external_item__title)
+        private var titleTv: TextView = view.findViewById(R.id.fragment_list_item__title)
         private var descriptionTv: TextView =
-            view.findViewById(R.id.fragment_external_item__description)
-        private var imageView: ImageView = view.findViewById(R.id.fragment_external_item__image)
+            view.findViewById(R.id.fragment_list_item__description)
+        private var imageView: ImageView = view.findViewById(R.id.fragment_list_item__image)
         var downloadButton: FloatingActionButton =
-            view.findViewById(R.id.fragment_external_item__downloadButton)
-
+            view.findViewById(R.id.fragment_list_item__button)
         fun bind(item: QuestMeta) {
             titleTv.text = item.title
             descriptionTv.text = item.description
@@ -46,7 +45,7 @@ class QuestItemAdapter(
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): QuestItemHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.fragment_external_item, viewGroup, false)
+            .inflate(R.layout.fragment_list_item, viewGroup, false)
         return QuestItemHolder(view)
     }
 
@@ -54,7 +53,7 @@ class QuestItemAdapter(
         val meta = quests[position]
 
         holder.bind(quests[position])
-
+        holder.downloadButton.setImageResource(R.drawable.ic_download_black_24dp)
         holder.downloadButton.setOnClickListener {
             Log.i("LOG", getQuestFromMeta(meta).toString())
             vieModel.addQuest(getQuestFromMeta(meta))

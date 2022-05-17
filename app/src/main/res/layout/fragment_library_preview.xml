@@ -7,7 +7,9 @@
         android:id="@+id/fragment_preview_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screen.preview.QuestPreviewFragment">
+        tools:context=".screen.preview.QuestPreviewFragment"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
 
     <ScrollView
             android:id="@+id/fragment_preview__scroll_view"
@@ -28,7 +30,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
-                    android:paddingTop="8dp"
+                    android:paddingTop="32dp"
                     android:paddingRight="8dp"
                     android:paddingBottom="8dp"
                     app:layout_constraintEnd_toEndOf="parent"

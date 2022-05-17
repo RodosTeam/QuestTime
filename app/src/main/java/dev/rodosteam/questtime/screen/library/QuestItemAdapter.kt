@@ -22,11 +22,11 @@ class QuestItemAdapter(
     RecyclerView.Adapter<QuestItemAdapter.QuestItemHolder>() {
 
     class QuestItemHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        private var titleTv: TextView = view.findViewById(R.id.fragment_library_item__title)
-        private var descriptionTv: TextView = view.findViewById(R.id.fragment_library_item__description)
-        private var imageView: ImageView = view.findViewById(R.id.fragment_library_item__image)
+        private var titleTv: TextView = view.findViewById(R.id.fragment_list_item__title)
+        private var descriptionTv: TextView = view.findViewById(R.id.fragment_list_item__description)
+        private var imageView: ImageView = view.findViewById(R.id.fragment_list_item__image)
         var playButton: FloatingActionButton =
-            view.findViewById(R.id.fragment_library_item__playButton)
+            view.findViewById(R.id.fragment_list_item__button)
 
         fun bind(item: Quest) {
             titleTv.text = item.title
@@ -46,6 +46,7 @@ class QuestItemAdapter(
 
     override fun onBindViewHolder(holder: QuestItemHolder, position: Int) {
         holder.bind(quests[position])
+        holder.playButton.setImageResource(R.drawable.ic_play_black_24dp)
         holder.playButton.setOnClickListener {
             navController.navigate(
                 R.id.action_navigation_library_to_questContentFragment,
