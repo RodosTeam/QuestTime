@@ -25,7 +25,7 @@ class QuestMetaFireBase : QuestMetaRepoBase() {
             }
 
             override fun onCancelled(p0: DatabaseError) {
-                TODO("Not yet implemented")
+                // TODO("Not yet implemented")
             }
         })
     }

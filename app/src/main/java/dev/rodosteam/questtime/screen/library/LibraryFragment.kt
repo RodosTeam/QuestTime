@@ -4,17 +4,11 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.FragmentLibraryBinding
 import dev.rodosteam.questtime.quest.database.Quest
-import dev.rodosteam.questtime.quest.database.QuestDatabase
-import dev.rodosteam.questtime.quest.database.QuestRepository
-import dev.rodosteam.questtime.quest.model.QuestMeta
 import dev.rodosteam.questtime.screen.common.base.BaseFragmentWithOptionMenu
-import dev.rodosteam.questtime.screen.external.ExternalViewModel
 import dev.rodosteam.questtime.utils.ViewModelFactory
 
 class LibraryFragment : BaseFragmentWithOptionMenu() {
@@ -40,7 +34,6 @@ class LibraryFragment : BaseFragmentWithOptionMenu() {
         quests.addAll(viewModel.loaded.toMutableList())
         adapter = QuestItemAdapter(quests, findNavController())
         binding.libraryRecyclerView.adapter = adapter
-        binding.libraryRecyclerView.layoutManager = LinearLayoutManager(this.context)
         return binding.root
     }
 

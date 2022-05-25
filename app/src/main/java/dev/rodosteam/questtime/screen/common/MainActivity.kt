@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.ActivityMainBinding
 import dev.rodosteam.questtime.quest.repo.meta.QuestMetaRepoJson
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        val navBar: BottomNavigationView = binding.bottomNavBar
+        val navBar = binding.navBar as NavigationBarView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 

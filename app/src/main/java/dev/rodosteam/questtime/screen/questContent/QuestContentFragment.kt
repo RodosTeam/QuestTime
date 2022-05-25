@@ -80,7 +80,7 @@ class QuestContentFragment : BaseFragment() {
     private fun activateButton(order: Int, walk: Walkthrough) {
         val button = buttons[order]
         val text = walk.page.choices[order].displayText
-        button.text = if (text.length > 24) text.substring(0, 23) else text // до 14 символов
+        button.text = if (text.length > 20) text.substring(0, 19) + "..." else text // до 20 символов
         button.setOnClickListener { // чет сделать
             sync(walk.choose(order))
         }
@@ -94,7 +94,7 @@ class QuestContentFragment : BaseFragment() {
     private fun deactivateButton(order: Int) {
         val button = buttons[order]
         button.text = ""
-        button.visibility = View.INVISIBLE
+        button.visibility = View.GONE
     }
 
 

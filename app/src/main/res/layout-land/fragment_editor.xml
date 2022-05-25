@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".screen.editor.EditorFragment"
+                                                   android:layout_marginStart="72dp"
+                                                   android:layout_marginEnd="16dp">
+
+    <EditText
+            android:id="@+id/fragment_editor__idEt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:hint="id of quest"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+    <EditText
+            android:id="@+id/fragment_editor__nameEt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="name of quest"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_editor__idEt"/>
+    <EditText
+            android:id="@+id/fragment_editor__descriptionEt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Description"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_editor__nameEt"/>
+    <EditText
+            android:id="@+id/fragment_editor__authorEt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Author Name"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_editor__descriptionEt"/>
+    <EditText
+            android:id="@+id/fragment_editor__downloadsEt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="count of downloads"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_editor__authorEt"/>
+    <EditText
+            android:id="@+id/fragment_editor__favoritesEt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="count of favorites"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_editor__downloadsEt"/>
+    <EditText
+            android:id="@+id/fragment_editor__imageUrlEt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Image url"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_editor__favoritesEt"/>
+    <EditText
+            android:id="@+id/fragment_editor__jsonEt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Json object graph"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_editor__imageUrlEt"/>
+    <Button
+            android:id="@+id/fragment_editor__createBtn"
+            android:layout_width="100sp"
+            android:layout_height="40dp"
+            android:text="create"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_editor__jsonEt"/>
+    <TextView
+            android:id="@+id/fragment_editor__unsupported"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="unsupported"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="34sp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
