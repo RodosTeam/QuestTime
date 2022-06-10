@@ -5,6 +5,7 @@
     {
       "id": 1,
       "displayText": "Page 1",
+      "imageUrl": "https://static8.depositphotos.com/1003153/893/v/450/depositphotos_8938809-stock-illustration-example-rubber-stamp.jpg",
       "choices": [
         {
           "nextPageId": 2,
@@ -18,6 +19,7 @@
     },
     {
       "id": 2,
+      "imageUrl": "https://static8.depositphotos.com/1003153/893/v/450/depositphotos_8938809-stock-illustration-example-rubber-stamp.jpg",
       "displayText": "Page 2",
       "choices": [
         {
