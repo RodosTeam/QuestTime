@@ -43,8 +43,8 @@ class QuestContentRepoJson(
             jsonPages.asIterableOfJSONObjects().map {
                 QuestContent.Page(
                     QuestContent.Page.Id(it.getLong(ID)),
-                    it.getString(DISPLAY_TEXT),
                     it.getString(IMAGE_URL),
+                    it.getString(DISPLAY_TEXT),
                     readChoices(it.getJSONArray(CHOICES))
                 )
             }.toList()
