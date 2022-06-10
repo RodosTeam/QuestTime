@@ -21,6 +21,7 @@ class QuestContent private constructor(val pages: Map<Page.Id, Page>, val starti
         val displayText: String,
         val choices: List<Choice>
     ) {
+
         @JvmInline
         value class Id(private val id: Long)
 
