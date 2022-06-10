@@ -77,10 +77,10 @@ class EditorFragment : BaseFragment() {
                 if (count % 2 == 1) {
                     binding.editorImageView!!.visibility = View.VISIBLE
                     binding.editorProgressBar!!.visibility = View.INVISIBLE
+                    binding.editorProgressBar!!.isClickable = true
                 } else {
                     binding.editorImageView!!.visibility = View.INVISIBLE
                     binding.editorProgressBar!!.visibility = View.VISIBLE
-                    binding.editorProgressBar!!.isClickable = true
                 }
                 count++
             }
