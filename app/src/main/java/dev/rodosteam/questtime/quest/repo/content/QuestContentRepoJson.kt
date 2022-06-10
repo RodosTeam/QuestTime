@@ -21,6 +21,7 @@ class QuestContentRepoJson(
         private const val PAGES = "pages"
         private const val CHOICES = "choices"
         private const val ID = "id"
+        private const val IMAGE_URL = "imageUrl"
         private const val NEXT_PAGE_ID = "nextPageId"
         private const val DISPLAY_TEXT = "displayText"
 
@@ -42,6 +43,7 @@ class QuestContentRepoJson(
             jsonPages.asIterableOfJSONObjects().map {
                 QuestContent.Page(
                     QuestContent.Page.Id(it.getLong(ID)),
+                    it.getString(IMAGE_URL),
                     it.getString(DISPLAY_TEXT),
                     readChoices(it.getJSONArray(CHOICES))
                 )

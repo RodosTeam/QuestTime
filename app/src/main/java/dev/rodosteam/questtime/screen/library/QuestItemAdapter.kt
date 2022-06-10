@@ -12,10 +12,8 @@ import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.quest.database.Quest
-import dev.rodosteam.questtime.quest.model.QuestMeta
 import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.DOWNLOADED_KEY
 import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.QUEST_KEY
-import dev.rodosteam.questtime.utils.InternalStorage
 
 class QuestItemAdapter(
     private val quests: List<Quest>,
@@ -24,11 +22,11 @@ class QuestItemAdapter(
     RecyclerView.Adapter<QuestItemAdapter.QuestItemHolder>() {
 
     class QuestItemHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        private var titleTv: TextView = view.findViewById(R.id.fragment_library_item__title)
-        private var descriptionTv: TextView = view.findViewById(R.id.fragment_library_item__description)
-        private var imageView: ImageView = view.findViewById(R.id.fragment_library_item__image)
+        private var titleTv: TextView = view.findViewById(R.id.fragment_list_item__title)
+        private var descriptionTv: TextView = view.findViewById(R.id.fragment_list_item__description)
+        private var imageView: ImageView = view.findViewById(R.id.fragment_list_item__image)
         var playButton: FloatingActionButton =
-            view.findViewById(R.id.fragment_library_item__playButton)
+            view.findViewById(R.id.fragment_list_item__button)
 
         fun bind(item: Quest) {
             titleTv.text = item.title
@@ -42,12 +40,13 @@ class QuestItemAdapter(
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): QuestItemHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.fragment_library_item, viewGroup, false)
+            .inflate(R.layout.fragment_list_item, viewGroup, false)
         return QuestItemHolder(view)
     }
 
     override fun onBindViewHolder(holder: QuestItemHolder, position: Int) {
         holder.bind(quests[position])
+        holder.playButton.setImageResource(R.drawable.ic_play_black_24dp)
         holder.playButton.setOnClickListener {
             navController.navigate(
                 R.id.action_navigation_library_to_questContentFragment,

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Use fragment_list_item instead-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools"
-              android:id="@+id/fragment_library_item__main"
+              android:id="@+id/fragment_list_item__main"
               android:layout_width="match_parent"
               android:layout_height="120dp"
               android:background="?android:attr/selectableItemBackground"
@@ -12,17 +13,16 @@
               android:paddingBottom="8dp">
 
     <ImageView
-            android:id="@+id/fragment_external_item__image"
+            android:id="@+id/fragment_list_item_deprecated__image"
             android:layout_width="104dp"
             android:layout_height="104dp"
             android:background="?colorPrimary"
             android:contentDescription="@string/image_description"
-            android:padding="1dp"
             android:scaleType="fitXY"
             tools:srcCompat="@tools:sample/backgrounds/scenic[0]"/>
 
     <LinearLayout
-            android:id="@+id/fragment_external_item__data"
+            android:id="@+id/fragment_list_item_deprecated__data"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="6"
@@ -34,7 +34,7 @@
             android:paddingBottom="8dp">
 
         <TextView
-                android:id="@+id/fragment_external_item__title"
+                android:id="@+id/fragment_list_item_deprecated__title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -42,23 +42,23 @@
                 android:paddingBottom="4dp"
                 android:text="@string/default_title"
                 android:textAlignment="viewStart"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold"/>
 
         <TextView
-                android:id="@+id/fragment_external_item__description"
+                android:id="@+id/fragment_list_item_deprecated__description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="3"
                 android:text="@string/lorem_ipsum"
                 android:textAlignment="viewStart"
-                android:textSize="12sp"/>
+                android:textSize="14sp"/>
 
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fragment_external_item__downloadButton"
+            android:id="@+id/fragment_list_item_deprecated__downloadButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -66,6 +66,7 @@
             android:contentDescription="@string/play"
             android:src="@drawable/ic_download_black_24dp"
             app:borderWidth="0dp"
-            app:useCompatPadding="true"/>
+            app:useCompatPadding="true"
+            app:fabSize="mini"/>
 
 </LinearLayout>

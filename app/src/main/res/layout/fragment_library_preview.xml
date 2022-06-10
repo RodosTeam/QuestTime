@@ -7,7 +7,9 @@
         android:id="@+id/fragment_preview_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screen.preview.QuestPreviewFragment">
+        tools:context=".screen.preview.QuestPreviewFragment"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
 
     <ScrollView
             android:id="@+id/fragment_preview__scroll_view"
@@ -28,7 +30,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
-                    android:paddingTop="8dp"
+                    android:paddingTop="32dp"
                     android:paddingRight="8dp"
                     android:paddingBottom="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -108,7 +110,10 @@
                         android:layout_marginRight="16dp"
                         android:layout_marginBottom="2dp"
                         android:layout_weight="1"
-                        android:text="@string/delete_button"/>
+                        android:text="@string/delete_button"
+                        android:background="@drawable/button_background"
+                        android:textColor="?colorOnSecondary"
+                        android:foreground="?android:attr/selectableItemBackground"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/fragment_preview__right_button"
@@ -119,7 +124,10 @@
                         android:layout_marginRight="16dp"
                         android:layout_marginBottom="2dp"
                         android:layout_weight="1"
-                        android:text="@string/favorite_button"/>
+                        android:text="@string/favorite_button"
+                        android:background="@drawable/button_background"
+                        android:textColor="?colorOnSecondary"
+                        android:foreground="?android:attr/selectableItemBackground"/>
             </LinearLayout>
 
             <View
@@ -148,7 +156,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/fragment_preview__separator"
                     app:layout_constraintVertical_bias="0.0"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </ScrollView>
 

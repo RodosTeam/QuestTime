@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import dev.rodosteam.questtime.R
 import dev.rodosteam.questtime.databinding.FragmentExternalBinding
 import dev.rodosteam.questtime.quest.model.QuestMeta
@@ -35,7 +33,6 @@ class ExternalFragment : BaseFragmentWithOptionMenu() {
         quests.addAll(app.metaCloud.findAll().filter { it.id !in downloaded.keys })
         adapter = QuestItemAdapter(quests, findNavController(), viewModel)
         binding.externalRecyclerView.adapter = adapter
-        binding.externalRecyclerView.layoutManager = LinearLayoutManager(this.context)
         return binding.root
     }
 
@@ -80,3 +77,4 @@ class ExternalFragment : BaseFragmentWithOptionMenu() {
         _binding = null
     }
 }
+

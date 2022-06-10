@@ -6,7 +6,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".screen.settings.SettingsFragment"
-        android:id="@+id/fragment_settings__layout">
+        android:id="@+id/fragment_settings__layout"
+        android:layout_marginStart="72dp"
+        android:layout_marginEnd="16dp">
 
     <LinearLayout
             android:layout_width="match_parent"

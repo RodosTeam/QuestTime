@@ -17,9 +17,11 @@ class QuestContent private constructor(val pages: Map<Page.Id, Page>, val starti
      */
     data class Page(
         val id: Id,
+        val imageUrl: String,
         val displayText: String,
         val choices: List<Choice>
     ) {
+
         @JvmInline
         value class Id(private val id: Long)
 

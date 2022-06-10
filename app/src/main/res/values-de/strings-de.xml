@@ -15,9 +15,12 @@
     <string name="search_text">Suche…</string>
     <string name="title_library">Bibliotek</string>
     <string name="title_external">Extern</string>
-    <string name="title_editor">Editor</string>
+    <string name="title_editor">Cats</string>
     <string name="title_settings">Einstellung</string>
     <string name="play">Play</string>
     <string name="some_content">Einige Inhalte</string>
     <string name="language_settings">Sprache:</string>
+    <string name="create_cat">Katze erstellen</string>
+    <string name="cat_description">Hier muss deine Katze sein</string>
+    <string name="generate">Generieren</string>
 </resources>

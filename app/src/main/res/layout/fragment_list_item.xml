@@ -3,14 +3,14 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/fragment_library_item__main"
+        android:id="@+id/fragment_list_item__main"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:background="?android:attr/selectableItemBackground"
 >
 
     <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/fragment_library_item__image"
+            android:id="@+id/fragment_list_item__image"
             android:layout_width="104dp"
             android:layout_height="104dp"
             android:layout_marginEnd="4dp"
@@ -19,32 +19,31 @@
             android:layout_marginBottom="8dp"
             android:contentDescription="@string/image_description"
             android:background="?colorPrimary"
-            android:padding="1dp"
             android:scaleType="fitXY"
             android:src="@drawable/ic_launcher_foreground"
             tools:srcCompat="@tools:sample/backgrounds/scenic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fragment_library_item__data"
-            />
+            app:layout_constraintEnd_toStartOf="@+id/fragment_list_item__data"
+    />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fragment_library_item__data"
+            android:id="@+id/fragment_list_item__data"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/fragment_library_item__playButton"
-            app:layout_constraintStart_toEndOf="@+id/fragment_library_item__image"
+            app:layout_constraintEnd_toStartOf="@+id/fragment_list_item__button"
+            app:layout_constraintStart_toEndOf="@+id/fragment_list_item__image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
     >
 
         <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/fragment_library_item__title"
+                android:id="@+id/fragment_list_item__title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="2dp"
@@ -52,46 +51,50 @@
                 android:gravity="start|top"
                 android:text="@string/default_title"
                 android:textAlignment="viewStart"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:maxLines="1"
                 android:ellipsize="end"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/fragment_library_item__description"/>
+                app:layout_constraintBottom_toTopOf="@+id/fragment_list_item__description"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/fragment_library_item__description"
+                android:id="@+id/fragment_list_item__description"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:padding="2dp"
+                android:padding="1dp"
                 android:gravity="start|top"
                 android:text="@string/lorem_ipsum"
                 android:textAlignment="viewStart"
-                android:textSize="12sp"
-                android:maxLines="4"
+                android:textSize="16sp"
+                android:maxLines="3"
                 android:ellipsize="end"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_library_item__title"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_list_item__title"
         />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fragment_library_item__playButton"
+            android:id="@+id/fragment_list_item__button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="?colorPrimary"
+            android:backgroundTint="?android:attr/colorBackground"
             android:contentDescription="@string/play"
             android:src="@drawable/ic_play_black_24dp"
-            app:borderWidth="0dp"
+            app:borderWidth="2dp"
             app:useCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fragment_library_item__data"/>
+            app:layout_constraintStart_toEndOf="@+id/fragment_list_item__data"
+            app:fabCustomSize="44dp"
+            app:tint="?colorPrimary"
+            app:backgroundTint="?colorPrimary"
+            app:maxImageSize="32dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
