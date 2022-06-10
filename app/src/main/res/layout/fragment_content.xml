@@ -47,64 +47,62 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="bottom"
-                android:orientation="vertical"
-                android:paddingBottom="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_content__text">
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:orientation="vertical"
+                    android:paddingBottom="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_content__text"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/fragment_content__button1"
-                    style="@style/Theme.QuestTime"
-                    android:layout_width="256dp"
-                    android:layout_height="wrap_content"
-                    android:background="?colorPrimary"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:maxLength="24"
-                    android:textColor="?colorOnSecondary"
-                    android:textSize="14sp" />
+                        android:id="@+id/fragment_content__button1"
+                        style="@style/Theme.QuestTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?colorPrimary"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:textColor="?colorOnSecondary"
+                        android:textSize="14sp"/>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/fragment_content__button2"
-                    style="@style/Theme.QuestTime"
-                    android:layout_width="256dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:background="?colorPrimary"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:maxLength="24"
-                    android:textColor="?colorOnSecondary"
-                    android:textSize="14sp"/>
+                        android:id="@+id/fragment_content__button2"
+                        style="@style/Theme.QuestTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="?colorPrimary"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:textColor="?colorOnSecondary"
+                        android:textSize="14sp"/>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/fragment_content__button3"
-                    style="@style/Theme.QuestTime"
-                    android:layout_width="256dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:background="?colorPrimary"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:maxLength="24"
-                    android:textColor="?colorOnSecondary"
-                    android:textSize="14sp" />
+                        android:id="@+id/fragment_content__button3"
+                        style="@style/Theme.QuestTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="?colorPrimary"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:textColor="?colorOnSecondary"
+                        android:textSize="14sp"/>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/fragment_content__button4"
-                    style="@style/Theme.QuestTime"
-                    android:layout_width="256dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:background="?colorPrimary"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:maxLength="24"
-                    android:textColor="?colorOnSecondary"
-                    android:textSize="14sp" />
+                        android:id="@+id/fragment_content__button4"
+                        style="@style/Theme.QuestTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="?colorPrimary"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:textColor="?colorOnSecondary"
+                        android:textSize="14sp"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

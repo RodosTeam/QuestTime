@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -79,15 +78,16 @@ class QuestContentFragment : BaseFragment() {
 
     private fun activateButton(order: Int, walk: Walkthrough) {
         val button = buttons[order]
-        val text = walk.page.choices[order].displayText
-        button.text = if (text.length > 20) text.substring(0, 19) + "..." else text // до 20 символов
+        button.text = walk.page.choices[order].displayText
         button.setOnClickListener { // чет сделать
             sync(walk.choose(order))
         }
+        /*
         button.setOnLongClickListener { // открыть диалог для подсказки
             AlertDialog.Builder(requireContext()).setTitle(button.text).setMessage(text).show()
             true
         }
+        */
         button.visibility = View.VISIBLE
     }
 
