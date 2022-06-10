@@ -58,4 +58,6 @@
     <string name="some_content">Some Content</string>
     <string name="language_settings">Language:</string>
     <string name="create_cat">Create cat</string>
+    <string name="cat_description">Here must be your cat</string>
+    <string name="generate">Generate</string>
 </resources>

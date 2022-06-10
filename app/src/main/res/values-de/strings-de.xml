@@ -20,4 +20,7 @@
     <string name="play">Play</string>
     <string name="some_content">Einige Inhalte</string>
     <string name="language_settings">Sprache:</string>
+    <string name="create_cat">Katze erstellen</string>
+    <string name="cat_description">Hier muss deine Katze sein</string>
+    <string name="generate">Generieren</string>
 </resources>

@@ -20,4 +20,7 @@
     <string name="title_editor">Редактор</string>
     <string name="title_library">Библиотека</string>
     <string name="language_settings">Язык:</string>
+    <string name="create_cat">Сгенерировать кота</string>
+    <string name="cat_description">Здесь должен быть ваш кот</string>
+    <string name="generate">Сгенерировать</string>
 </resources>
