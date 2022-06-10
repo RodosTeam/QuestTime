@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/navigation_library"
+            android:enabled="true"
+            android:icon="@drawable/ic_library_black_24dp"
+            android:title="@string/title_library"/>
+
+    <item
+            android:id="@+id/navigation_external"
+            android:enabled="true"
+            android:icon="@drawable/ic_external_black_24dp"
+            android:title="@string/title_external"/>
+
+    <item
+            android:id="@+id/navigation_editor"
+            android:enabled="true"
+            android:icon="@drawable/ic_editor_black_24dp"
+            android:title="@string/title_editor"/>
+
+    <item
+            android:id="@+id/navigation_settings"
+            android:enabled="true"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/title_settings"/>
+
+</menu>

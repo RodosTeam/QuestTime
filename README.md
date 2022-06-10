@@ -11,5 +11,3 @@
 - [Александр Киселев](https://github.com/AlexanderKiselyov)
 - [Ткаченко Александра](https://github.com/Alexandra-Tkachenko)
 
-
-

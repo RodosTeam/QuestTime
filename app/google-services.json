@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "251418820203",
+    "firebase_url": "https://questtimedb-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "questtimedb",
+    "storage_bucket": "questtimedb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251418820203:android:229e55587d43b271813b2e",
+        "android_client_info": {
+          "package_name": "dev.rodosteam.questtime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "251418820203-6baoh2u6d9g1gabgncoudck4stnovl0k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgKMwYnmHHM0WPV6eQF_8Z8Ku4NYCuoFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "251418820203-6baoh2u6d9g1gabgncoudck4stnovl0k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

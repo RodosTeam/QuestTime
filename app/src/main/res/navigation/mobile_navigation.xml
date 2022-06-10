@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mobile_navigation"
+        app:startDestination="@+id/navigation_library">
+
+    <fragment
+            android:id="@+id/navigation_library"
+            android:name="dev.rodosteam.questtime.screen.library.LibraryFragment"
+            android:label="@string/title_library"
+            tools:layout="@layout/fragment_library">
+        <action
+                android:id="@+id/action_navigation_library_to_questPreviewFragment"
+                app:destination="@id/navigation_quest_preview"/>
+        <action
+                android:id="@+id/action_navigation_library_to_questContentFragment"
+                app:destination="@id/navigation_quest_content"/>
+    </fragment>
+
+    <fragment
+            android:id="@+id/navigation_external"
+            android:name="dev.rodosteam.questtime.screen.external.ExternalFragment"
+            android:label="@string/title_external"
+            tools:layout="@layout/fragment_external">
+        <action
+                android:id="@+id/action_navigation_external_to_navigation_quest_preview"
+                app:destination="@id/navigation_quest_preview"/>
+    </fragment>
+
+    <fragment
+            android:id="@+id/navigation_editor"
+            android:name="dev.rodosteam.questtime.screen.editor.EditorFragment"
+            android:label="@string/title_editor"
+            tools:layout="@layout/fragment_editor"/>
+
+    <fragment
+            android:id="@+id/navigation_settings"
+            android:name="dev.rodosteam.questtime.screen.settings.SettingsFragment"
+            android:label="@string/title_settings"
+            tools:layout="@layout/fragment_settings"/>
+    <fragment
+            android:id="@+id/navigation_quest_preview"
+            android:name="dev.rodosteam.questtime.screen.preview.QuestPreviewFragment"
+            tools:layout="@layout/fragment_library_preview"
+            android:label="">
+        <action
+                android:id="@+id/action_questPreviewFragment_to_questContentFragment"
+                app:destination="@id/navigation_quest_content"/>
+    </fragment>
+    <fragment
+            android:id="@+id/navigation_quest_content"
+            android:name="dev.rodosteam.questtime.screen.questContent.QuestContentFragment"
+            android:label=""/>
+</navigation>

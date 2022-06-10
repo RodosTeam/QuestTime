@@ -1,0 +1,38 @@
+{
+  "name": "Test quest",
+  "startNodeId": 1,
+  "pages": [
+    {
+      "id": 1,
+      "displayText": "Page 1",
+      "imageUrl": "https://static8.depositphotos.com/1003153/893/v/450/depositphotos_8938809-stock-illustration-example-rubber-stamp.jpg",
+      "choices": [
+        {
+          "nextPageId": 2,
+          "displayText": "Go to page 2"
+        },
+        {
+          "nextPageId": 3,
+          "displayText": "Go to page 3"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "imageUrl": "https://static8.depositphotos.com/1003153/893/v/450/depositphotos_8938809-stock-illustration-example-rubber-stamp.jpg",
+      "displayText": "Page 2",
+      "choices": [
+        {
+          "nextPageId": 3,
+          "displayText": "Go to page 3"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "imageUrl": "https://static8.depositphotos.com/1003153/893/v/450/depositphotos_8938809-stock-illustration-example-rubber-stamp.jpg",
+      "displayText": "Page 3",
+      "choices": []
+    }
+  ]
+}
