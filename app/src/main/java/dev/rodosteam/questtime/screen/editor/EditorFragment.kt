@@ -51,6 +51,7 @@ class EditorFragment : BaseFragment() {
                             .load(url)
                             .into(it1)
                     }
+                    binding.editorGetCatButton!!.isClickable = true
                 }
             }.start()
         }
@@ -80,7 +81,6 @@ class EditorFragment : BaseFragment() {
                 } else {
                     binding.editorImageView!!.visibility = View.INVISIBLE
                     binding.editorProgressBar!!.visibility = View.VISIBLE
-                    binding.editorGetCatButton!!.isClickable = true
                 }
                 count++
             }
