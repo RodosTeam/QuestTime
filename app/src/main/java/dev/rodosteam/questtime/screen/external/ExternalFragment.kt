@@ -77,3 +77,4 @@ class ExternalFragment : BaseFragmentWithOptionMenu() {
         _binding = null
     }
 }
+

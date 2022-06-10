@@ -8,10 +8,12 @@
 
     <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/fragment_content__image"
-            android:layout_width="236dp"
-            android:layout_height="130dp"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
             android:layout_marginTop="4dp"
             android:contentDescription="@string/image_description"
+            android:layout_marginStart="150dp"
+            android:layout_marginEnd="150dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

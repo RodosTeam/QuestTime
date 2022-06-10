@@ -66,6 +66,9 @@ class QuestContentFragment : BaseFragment() {
         val choices = walk.page.choices.size
 
         textView.text = walk.page.displayText
+        Glide.with(binding.root)
+            .load(walk.page.imageUrl)
+            .into(binding.fragmentContentImage)
 
         for (i in 0..3) {
             if (i < choices) {
