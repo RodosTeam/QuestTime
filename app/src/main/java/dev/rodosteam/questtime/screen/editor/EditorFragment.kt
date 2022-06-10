@@ -27,33 +27,6 @@ class EditorFragment : BaseFragment() {
         _binding = FragmentEditorBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.fragmentEditorCreateBtn.setOnClickListener {
-
-            val id = binding.fragmentEditorIdEt.text.toString().toLong()
-            val questName = binding.fragmentEditorNameEt.text.toString()
-            val questDescription = binding.fragmentEditorDescriptionEt.text.toString()
-            val questAuthor = binding.fragmentEditorAuthorEt.text.toString()
-            val countOfDownloads = binding.fragmentEditorDownloadsEt.text.toString().toInt()
-            val countOfFavorites = binding.fragmentEditorFavoritesEt.text.toString().toInt()
-            val createdTime = System.currentTimeMillis()
-            val iconImageUrl = binding.fragmentEditorImageUrlEt.text.toString()
-            val jsonContent = binding.fragmentEditorJsonEt.text.toString()
-
-            val questItemDto = QuestMetaDto(
-                id,
-                questName,
-                questDescription,
-                questAuthor,
-                countOfDownloads,
-                countOfFavorites,
-                createdTime,
-                iconImageUrl,
-                jsonContent
-            )
-            app.metaCloud.fireMetaReference.push().setValue(questItemDto)
-
-        }
-
         return root
     }
 

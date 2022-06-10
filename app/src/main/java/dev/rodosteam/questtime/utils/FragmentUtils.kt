@@ -7,6 +7,7 @@ import dev.rodosteam.questtime.quest.database.Quest
 import dev.rodosteam.questtime.quest.model.QuestContent
 import dev.rodosteam.questtime.quest.model.Walkthrough
 import dev.rodosteam.questtime.quest.repo.content.QuestContentRepoJson
+import dev.rodosteam.questtime.screen.external.ExternalViewModel
 import dev.rodosteam.questtime.screen.library.LibraryViewModel
 import dev.rodosteam.questtime.screen.questContent.QuestContentViewModel
 import java.lang.IllegalArgumentException
