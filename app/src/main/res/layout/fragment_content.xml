@@ -37,16 +37,16 @@
             android:gravity="center_horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/fragment_content__text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:gravity="center_horizontal"
-                android:text="@string/lorem_ipsum2"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                    android:id="@+id/fragment_content__text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/lorem_ipsum2"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
             <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="0dp"
@@ -67,10 +67,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="4dp"
-                        android:background="?colorPrimary"
+                        android:background="@drawable/button_background"
                         android:foreground="?android:attr/selectableItemBackground"
                         android:textColor="?colorOnSecondary"
-                        android:textSize="14sp"/>
+                        android:textSize="20sp"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/fragment_content__button2"
@@ -79,10 +79,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="4dp"
-                        android:background="?colorPrimary"
+                        android:background="@drawable/button_background"
                         android:foreground="?android:attr/selectableItemBackground"
                         android:textColor="?colorOnSecondary"
-                        android:textSize="14sp"/>
+                        android:textSize="20sp"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/fragment_content__button3"
@@ -91,10 +91,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="4dp"
-                        android:background="?colorPrimary"
+                        android:background="@drawable/button_background"
                         android:foreground="?android:attr/selectableItemBackground"
                         android:textColor="?colorOnSecondary"
-                        android:textSize="14sp"/>
+                        android:textSize="20sp"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/fragment_content__button4"
@@ -103,10 +103,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="4dp"
-                        android:background="?colorPrimary"
+                        android:background="@drawable/button_background"
                         android:foreground="?android:attr/selectableItemBackground"
                         android:textColor="?colorOnSecondary"
-                        android:textSize="14sp"/>
+                        android:textSize="20sp"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

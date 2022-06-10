@@ -110,7 +110,10 @@
                         android:layout_marginRight="16dp"
                         android:layout_marginBottom="2dp"
                         android:layout_weight="1"
-                        android:text="@string/delete_button"/>
+                        android:text="@string/delete_button"
+                        android:background="@drawable/button_background"
+                        android:textColor="?colorOnSecondary"
+                        android:foreground="?android:attr/selectableItemBackground"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/fragment_preview__right_button"
@@ -121,7 +124,10 @@
                         android:layout_marginRight="16dp"
                         android:layout_marginBottom="2dp"
                         android:layout_weight="1"
-                        android:text="@string/favorite_button"/>
+                        android:text="@string/favorite_button"
+                        android:background="@drawable/button_background"
+                        android:textColor="?colorOnSecondary"
+                        android:foreground="?android:attr/selectableItemBackground"/>
             </LinearLayout>
 
             <View
