@@ -7,19 +7,24 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import dev.rodosteam.questtime.databinding.FragmentContentBinding
 import dev.rodosteam.questtime.quest.model.QuestContent
-import dev.rodosteam.questtime.quest.model.Walkthrough
 import dev.rodosteam.questtime.quest.repo.content.QuestContentRepoJson
 import dev.rodosteam.questtime.screen.common.base.BaseFragment
 import dev.rodosteam.questtime.screen.preview.QuestPreviewFragment.Companion.QUEST_KEY
+import dev.rodosteam.questtime.utils.ViewModelFactory
 
 
 class QuestContentFragment : BaseFragment() {
 
-    private lateinit var viewModel: QuestContentViewModel
+    private val viewModel: QuestContentViewModel by viewModels {
+        ViewModelFactory(
+            app,
+            app.questRepo.lastLoaded[requireArguments().getInt(QUEST_KEY)]
+        )
+    }
     private var _binding: FragmentContentBinding? = null
     private val binding get() = _binding!!
     private lateinit var buttons: List<Button> // TODO optimize
@@ -31,7 +36,6 @@ class QuestContentFragment : BaseFragment() {
     ): View {
         enterFullscreen()
 
-        viewModel = ViewModelProvider(this)[QuestContentViewModel::class.java]
         _binding = FragmentContentBinding.inflate(inflater, container, false)
         val id = requireArguments().getInt(QUEST_KEY)
         val quest = app.questRepo.lastLoaded[id]
@@ -55,35 +59,35 @@ class QuestContentFragment : BaseFragment() {
             content = QuestContentRepoJson.readQuest(quest.contentJson)
         }
 
-        if (content != null) {
-            sync(Walkthrough(content!!))
+        viewModel.mutableLiveData.observe(this) {
+            sync(it)
         }
 
         return binding.root
     }
 
-    private fun sync(walk: Walkthrough) {
-        val choices = walk.page.choices.size
+    private fun sync(page: QuestContent.Page) {
+        val choices = page.choices.size
 
-        textView.text = walk.page.displayText
+        textView.text = page.displayText
         Glide.with(binding.root)
-            .load(walk.page.imageUrl)
+            .load(page.imageUrl)
             .into(binding.fragmentContentImage)
 
         for (i in 0..3) {
             if (i < choices) {
-                activateButton(i, walk)
+                activateButton(i, page)
             } else {
                 deactivateButton(i)
             }
         }
     }
 
-    private fun activateButton(order: Int, walk: Walkthrough) {
+    private fun activateButton(order: Int, page: QuestContent.Page) {
         val button = buttons[order]
-        button.text = walk.page.choices[order].displayText
+        button.text = page.choices[order].displayText
         button.setOnClickListener { // чет сделать
-            sync(walk.choose(order))
+            viewModel.chooseWalk(order)
         }
         /*
         button.setOnLongClickListener { // открыть диалог для подсказки
@@ -98,13 +102,6 @@ class QuestContentFragment : BaseFragment() {
         val button = buttons[order]
         button.text = ""
         button.visibility = View.GONE
-    }
-
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[QuestContentViewModel::class.java]
-        // TODO: Use the ViewModel
     }
 
     override fun onStop() {

@@ -9,7 +9,7 @@
     <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/fragment_content__image"
             android:layout_width="0dp"
-            android:layout_height="128dp"
+            android:layout_height="180dp"
             android:layout_marginTop="4dp"
             android:contentDescription="@string/image_description"
             android:layout_marginStart="150dp"
@@ -21,28 +21,28 @@
             android:scaleType="centerCrop"/>
 
     <ScrollView
-            android:id="@+id/scroll"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_content__image"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button_scroll"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="4dp">
+        android:id="@+id/scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_scroll"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_content__image">
 
         <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/fragment_content__text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="@string/lorem_ipsum2"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+            android:id="@+id/fragment_content__text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/lorem_ipsum2"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </ScrollView>
 
     <ScrollView
